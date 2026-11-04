@@ -96,3 +96,11 @@ footer {
     font-size: 14px;
     line-height: 1.5;
 }
+/* ORGANIZACION DEL FORMULARIO */
+form {
+    max-width: 500px;
+    margin: 25px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
