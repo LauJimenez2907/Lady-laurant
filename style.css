@@ -113,3 +113,13 @@ form textarea {
     font-size: 15px;
     outline: none;
 }
+/* BOTON DEL FORMULARIO */
+form button {
+    background-color: var(--rosado-fuerte);
+    color: var(--blanco);
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
