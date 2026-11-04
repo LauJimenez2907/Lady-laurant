@@ -14,3 +14,9 @@ body {
     margin: 0;
     padding: 0;
 }
+/* DISEÑO DEL ENCABEZADO */
+header {
+    background-color: var(--rosado);
+    text-align: center;
+    padding: 30px 20px;
+}
