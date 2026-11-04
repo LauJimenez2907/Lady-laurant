@@ -135,3 +135,9 @@ form label {
     color: var(--texto);
     margin-bottom: -6px;
 }
+/* EFECTO AL SELECCIONAR UN CAMPO */
+form input:focus,
+form textarea:focus {
+    border-color: var(--dorado);
+    box-shadow: 0 0 5px var(--rosado-fuerte);
+}
