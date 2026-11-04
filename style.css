@@ -6,3 +6,11 @@
     --dorado: #c9a45c;
     --texto: #5c4650;
 }
+/* ESTILO GENERAL DE LA PAGINA */
+body {
+    background-color: var(--blanco);
+    color: var(--texto);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
