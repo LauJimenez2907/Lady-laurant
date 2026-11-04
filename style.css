@@ -61,3 +61,10 @@ section h2 {
     font-size: 28px;
     margin-bottom: 15px;
 }
+/* ORGANIZACION DEL CATALOGO */
+.contenedor-productos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
