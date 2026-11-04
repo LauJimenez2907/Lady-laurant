@@ -129,3 +129,9 @@ form button:hover {
     transform: scale(1.03);
     transition: 0.3s;
 }
+/* ESPACIO ENTRE ETIQUETAS Y CAMPOS */
+form label {
+    font-weight: bold;
+    color: var(--texto);
+    margin-bottom: -6px;
+}
