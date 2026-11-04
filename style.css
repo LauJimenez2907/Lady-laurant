@@ -76,3 +76,9 @@ section h2 {
     padding: 20px;
     width: 250px;
 }
+/* TITULOS DE LAS TARJETAS */
+.tarjeta-producto h3 {
+    color: var(--dorado);
+    font-size: 20px;
+    margin-bottom: 10px;
+}
