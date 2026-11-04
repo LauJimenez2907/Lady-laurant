@@ -166,3 +166,10 @@ footer a {
 footer a:hover {
     color: var(--dorado);
 }
+/* AJUSTES DEL PIE DE PAGINA EN CELULARES */
+@media (max-width: 600px) {
+    footer {
+        padding: 18px 10px;
+        font-size: 14px;
+    }
+}
