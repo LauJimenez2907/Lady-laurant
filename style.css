@@ -68,3 +68,11 @@ section h2 {
     justify-content: center;
     gap: 20px;
 }
+/* DISEÑO DE LAS TARJETAS */
+.tarjeta-producto {
+    background-color: var(--rosado);
+    border: 1px solid var(--rosado-fuerte);
+    border-radius: 15px;
+    padding: 20px;
+    width: 250px;
+}
