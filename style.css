@@ -82,3 +82,11 @@ section h2 {
     font-size: 20px;
     margin-bottom: 10px;
 }
+/* DISEÑO DEL PIE DE PAGINA */
+footer {
+    background-color: var(--rosado);
+    color: var(--texto);
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+}
