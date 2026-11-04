@@ -50,4 +50,8 @@ nav a {
 /* EFECTO AL PASAR EL CURSOR */
 nav a:hover {
     color: var(--dorado);
+}/* DISEÑO DE LAS SECCIONES */
+section {
+    padding: 40px 20px;
+    text-align: center;
 }
