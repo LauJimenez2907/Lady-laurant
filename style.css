@@ -27,7 +27,19 @@ button {
     border-radius: 15px;
     box-shadow: 0px 4px 10px #e5b8ca;
 }
+/* CONTENEDOR DEL CATALOGO DE PRODUCTOS */
 .contenedor-productos {
     display: flex;
+    flex-wrap: wrap;
     gap: 20px;
+}
+
+/* TARJETAS DE LOS PRODUCTOS */
+.tarjeta {
+    background-color: white;
+    width: 220px;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(180, 100, 140, 0.15);
+    text-align: center;
 }
