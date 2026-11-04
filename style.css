@@ -47,3 +47,7 @@ nav a {
     margin: 0 15px;
     font-weight: bold;
 }
+/* EFECTO AL PASAR EL CURSOR */
+nav a:hover {
+    color: var(--dorado);
+}
