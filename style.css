@@ -20,3 +20,9 @@ header {
     text-align: center;
     padding: 30px 20px;
 }
+/* TITULO PRINCIPAL */
+header h1 {
+    color: var(--dorado);
+    font-size: 36px;
+    margin-bottom: 10px;
+}
