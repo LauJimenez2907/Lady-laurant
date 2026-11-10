@@ -34,5 +34,22 @@ router.get("/", (req, res) => {
     res.json(productos);
 });
 
+// Obtener un producto por su ID
+router.get("/:id", (req, res) => {
+    const id = Number(req.params.id);
+
+    const producto = productos.find((item) => item.id === id);
+
+    if (!producto) {
+        return res.status(404).json({
+            mensaje: "Producto no encontrado"
+        });
+    }
+
+    res.json(producto);
+});
+
 // Exportar las rutas
 module.exports = router;
+
+
