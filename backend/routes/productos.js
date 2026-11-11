@@ -49,6 +49,24 @@ router.get("/:id", (req, res) => {
     res.json(producto);
 });
 
+// Agregar un producto nuevo
+router.post("/", (req, res) => {
+    const nuevoProducto = {
+        id: productos.length + 1,
+        nombre: req.body.nombre,
+        descripcion: req.body.descripcion,
+        precio: req.body.precio,
+        categoria: req.body.categoria
+    };
+
+    productos.push(nuevoProducto);
+
+    res.status(201).json({
+        mensaje: "Producto agregado correctamente",
+        producto: nuevoProducto
+    });
+});
+
 // Exportar las rutas
 module.exports = router;
 
