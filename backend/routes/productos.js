@@ -67,6 +67,48 @@ router.post("/", (req, res) => {
     });
 });
 
+// Eliminar un producto por su ID
+router.delete("/:id", (req, res) => {
+    const id = Number(req.params.id);
+
+    const indice = productos.findIndex((item) => item.id === id);
+
+    if (indice === -1) {
+        return res.status(404).json({
+            mensaje: "Producto no encontrado"
+        });
+    }
+
+    productos.splice(indice, 1);
+
+    res.json({
+        mensaje: "Producto eliminado correctamente"
+    });
+});
+
+// Actualizar un producto por su ID
+router.put("/:id", (req, res) => {
+    const id = Number(req.params.id);
+
+    const producto = productos.find((item) => item.id === id);
+
+    if (!producto) {
+        return res.status(404).json({
+            mensaje: "Producto no encontrado"
+        });
+    }
+
+    producto.nombre = req.body.nombre;
+    producto.descripcion = req.body.descripcion;
+    producto.precio = req.body.precio;
+    producto.categoria = req.body.categoria;
+
+    res.json({
+        mensaje: "Producto actualizado correctamente",
+        producto: producto
+    });
+});
+
 // Exportar las rutas
 module.exports = router;
 
