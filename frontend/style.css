@@ -1,12 +1,26 @@
+
+/* =========================================
+   1. COLORES PRINCIPALES DE LADY LAURANT
+========================================= */
 /* COLORES PRINCIPALES DE LADY LAURANT */
 :root {
-    --rosado: #f8d7e5;
-    --rosado-fuerte: #e8a5c2;
-    --blanco: #ffffff;
-    --dorado: #c9a45c;
-    --texto: #5c4650;
+    --rosado: #FCE4EC;
+    --rosado-fuerte: #F4BFD0;
+    --rosado-oscuro: #E8A7BE;
+    --blanco: #FFFFFF;
+    --dorado: #E8D5A3;
+    --plateado: #E1E3E6;
+    --texto: #8A7D83;
+    --fondo: #FFFBFD;
 }
-/* ESTILO GENERAL DE LA PAGINA */
+
+/* =========================================
+   2. ESTILOS GENERALES
+========================================= */
+* {
+    box-sizing: border-box;
+}
+
 body {
     background-color: var(--blanco);
     color: var(--texto);
@@ -14,97 +28,275 @@ body {
     margin: 0;
     padding: 0;
 }
-/* DISEÑO DEL ENCABEZADO */
-header {
-    background-color: var(--rosado);
+
+/* =========================================
+   3. BARRA DE ANUNCIOS
+========================================= */
+.barra-anuncios {
+    background-color: var(--rosado-oscuro);
+    color: var(--blanco);
     text-align: center;
-    padding: 30px 20px;
+    padding: 10px;
+    font-size: 13px;
+    letter-spacing: 1px;
 }
-/* TITULO PRINCIPAL */
+
+/* =========================================
+   4. ENCABEZADO PRINCIPAL
+========================================= */
+header {
+    background-color: var(--blanco);
+    text-align: center;
+    padding: 25px 20px;
+}
+
 header h1 {
     color: var(--dorado);
-    font-size: 36px;
-    margin-bottom: 10px;
-}
-/* DESCRIPCION DEL ENCABEZADO */
-header p {
-    color: var(--texto);
-    font-size: 16px;
+    font-size: 38px;
     margin: 0;
 }
-/* DISEÑO DEL MENU DE NAVEGACION */
+
+header p {
+    color: var(--texto);
+    font-size: 13px;
+    letter-spacing: 3px;
+    margin-top: 8px;
+}
+
+/* =========================================
+   5. MENU DE NAVEGACION
+========================================= */
 nav {
     background-color: var(--blanco);
     text-align: center;
-    padding: 15px;
-    border-bottom: 2px solid var(--rosado);
+    padding: 18px;
+    border-top: 1px solid var(--rosado);
+    border-bottom: 1px solid var(--rosado);
 }
-/* ESTILO DE LOS ENLACES */
+
 nav a {
     color: var(--texto);
     text-decoration: none;
-    font-size: 16px;
+    font-size: 14px;
     margin: 0 15px;
     font-weight: bold;
+    transition: 0.3s;
 }
-/* EFECTO AL PASAR EL CURSOR */
+
 nav a:hover {
-    color: var(--dorado);
-}/* DISEÑO DE LAS SECCIONES */
+    color: var(--rosado-oscuro);
+}
+
+/* =========================================
+   6. SECCIONES GENERALES
+========================================= */
 section {
-    padding: 40px 20px;
+    padding: 55px 20px;
     text-align: center;
 }
-/* TITULOS DE LAS SECCIONES */
+
 section h2 {
-    color: var(--rosado-fuerte);
-    font-size: 28px;
+    color: var(--rosado-oscuro);
+    font-size: 30px;
     margin-bottom: 15px;
 }
-/* ORGANIZACION DEL CATALOGO */
+
+section p {
+    line-height: 1.7;
+}
+
+/* =========================================
+   7. PRESENTACION PRINCIPAL
+========================================= */
+.hero {
+    background-color: var(--fondo);
+    padding: 90px 20px;
+}
+
+.hero h2 {
+    color: var(--rosado-oscuro);
+    font-size: 42px;
+}
+
+.hero p {
+    max-width: 600px;
+    margin: 15px auto 25px;
+}
+
+/* =========================================
+   8. BOTONES GENERALES
+========================================= */
+.boton {
+    display: inline-block;
+    background-color: var(--rosado-fuerte);
+    color: var(--blanco);
+    text-decoration: none;
+    padding: 13px 25px;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.boton:hover {
+    background-color: var(--dorado);
+    transform: translateY(-2px);
+}
+
+
+/* =========================================
+   9. CATALOGO DE PRODUCTOS
+========================================= */
+
 .contenedor-productos {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
+    gap: 30px;
+    margin-top: 35px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
 }
-/* DISEÑO DE LAS TARJETAS */
+
+/* Diseño de cada tarjeta */
 .tarjeta-producto {
-    background-color: var(--rosado);
-    border: 1px solid var(--rosado-fuerte);
-    border-radius: 15px;
-    padding: 20px;
+    background-color: var(--blanco);
+    border: 1px solid var(--rosado);
+    border-radius: 20px;
+    padding: 18px;
     width: 250px;
+    box-shadow: 0 4px 15px rgba(232, 167, 190, 0.15);
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
-/* TITULOS DE LAS TARJETAS */
+
+/* Efecto al pasar el cursor */
+.tarjeta-producto:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 8px 20px rgba(232, 167, 190, 0.25);
+}
+
+/* Marco para las fotografias de los productos */
+.tarjeta-producto img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    padding: 8px;
+    border: 2px solid var(--rosado);
+    border-radius: 15px;
+    background-color: var(--blanco);
+}
+
+
+/* Nombre del producto */
 .tarjeta-producto h3 {
-    color: var(--dorado);
-    font-size: 20px;
-    margin-bottom: 10px;
+    color: var(--rosado-oscuro);
+    font-size: 19px;
+    margin: 15px 0 10px;
 }
-/* DISEÑO DEL PIE DE PAGINA */
-footer {
-    background-color: var(--rosado);
-    color: var(--texto);
-    text-align: center;
-    padding: 20px;
-    margin-top: 30px;
-}
-/* DESCRIPCION DE LOS PRODUCTOS */
+
+/* Descripcion del producto */
 .tarjeta-producto p {
     color: var(--texto);
     font-size: 14px;
-    line-height: 1.5;
+    line-height: 1.6;
 }
-/* ORGANIZACION DEL FORMULARIO */
+
+/* Boton para solicitar productos */
+.tarjeta-producto button {
+    background-color: var(--rosado-fuerte);
+    color: var(--blanco);
+    border: 1px solid var(--dorado);
+    padding: 11px 18px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 10px;
+}
+
+.tarjeta-producto button:hover {
+    background-color: var(--dorado);
+    transform: translateY(-2px);
+}
+
+
+/* Estilo para los precios */
+.tarjeta-producto p strong {
+    display: inline-block;
+    color: var(--dorado);
+    background-color: var(--fondo);
+    border: 1px solid var(--dorado);
+    border-radius: 20px;
+    padding: 8px 14px;
+    font-size: 16px;
+}
+
+
+
+/* =========================================
+   BOTONES DE CATEGORIAS
+========================================= */
+
+.categorias {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 25px 0;
+}
+
+.categorias button {
+    background-color: var(--rosado);
+    color: var(--texto);
+    border: 1px solid var(--dorado);
+    padding: 10px 18px;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.categorias button:hover {
+    background-color: var(--rosado-fuerte);
+    color: var(--blanco);
+    transform: translateY(-2px);
+}
+
+
+/* Categoria seleccionada */
+.categorias button.categoria-activa {
+    background-color: var(--rosado-oscuro);
+    color: var(--blanco);
+    border: 2px solid var(--dorado);
+    box-shadow: 0 3px 8px rgba(232, 167, 190, 0.3);
+    font-weight: bold;
+}
+
+
+/* =========================================
+   10. FORMULARIOS
+========================================= */
 form {
     max-width: 500px;
     margin: 25px auto;
     display: flex;
     flex-direction: column;
     gap: 12px;
+    background-color: var(--fondo);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
 }
-/* DISEÑO DE LOS CAMPOS */
+
+form label {
+    font-weight: bold;
+    color: var(--texto);
+}
+
 form input,
 form textarea {
     padding: 12px;
@@ -113,7 +305,13 @@ form textarea {
     font-size: 15px;
     outline: none;
 }
-/* BOTON DEL FORMULARIO */
+
+form input:focus,
+form textarea:focus {
+    border-color: var(--dorado);
+    box-shadow: 0 0 5px var(--rosado-fuerte);
+}
+
 form button {
     background-color: var(--rosado-fuerte);
     color: var(--blanco);
@@ -122,41 +320,25 @@ form button {
     border-radius: 8px;
     font-size: 16px;
     cursor: pointer;
-}
-/* EFECTO DEL BOTON */
-form button:hover {
-    background-color: var(--dorado);
-    transform: scale(1.03);
     transition: 0.3s;
 }
-/* ESPACIO ENTRE ETIQUETAS Y CAMPOS */
-form label {
-    font-weight: bold;
-    color: var(--texto);
-    margin-bottom: -6px;
+
+form button:hover {
+    background-color: var(--dorado);
 }
-/* EFECTO AL SELECCIONAR UN CAMPO */
-form input:focus,
-form textarea:focus {
-    border-color: var(--dorado);
-    box-shadow: 0 0 5px var(--rosado-fuerte);
-}
-/* FONDO Y ESPACIADO DEL FORMULARIO */
-form {
-    background-color: var(--blanco);
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-}
-/* MEJORA DEL PIE DE PAGINA */
+
+/* =========================================
+   11. PIE DE PAGINA
+========================================= */
 footer {
     background-color: var(--rosado);
     color: var(--texto);
     padding: 25px;
     text-align: center;
     border-top: 2px solid var(--dorado);
+    margin-top: 30px;
 }
-/* ENLACES DEL PIE DE PAGINA */
+
 footer a {
     color: var(--texto);
     text-decoration: none;
@@ -166,17 +348,144 @@ footer a {
 footer a:hover {
     color: var(--dorado);
 }
-/* AJUSTES DEL PIE DE PAGINA EN CELULARES */
+
+/* =========================================
+   12. CARRUSEL DE FOTOGRAFIAS
+========================================= */
+.carrusel {
+    width: 100%;
+    overflow: hidden;
+    padding: 20px 0;
+    background-color: #fff9fb;
+}
+
+.contenedor-carrusel {
+    background-color: #fff9fb;
+}
+.contenedor-carrusel {
+    display: flex;
+    width: 300%;
+    animation: pasarFotos 12s infinite;
+}
+
+.contenedor-carrusel img {
+    width: 33.333%;
+    height: 250px;
+    object-fit: contain;
+    padding: 5px;
+    background-color: #fff9fb;
+}
+
+/* Movimiento horizontal automatico */
+@keyframes pasarFotos {
+    0%, 30% {
+        transform: translateX(0);
+    }
+
+    33%, 63% {
+        transform: translateX(-33.333%);
+    }
+
+    66%, 96% {
+        transform: translateX(-66.666%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* =========================================
+   13. SECCION QUIENES SOMOS
+========================================= */
+
+.nosotros {
+    background-color: var(--rosado);
+}
+
+.nosotros p {
+    max-width: 700px;
+    margin: 15px auto;
+}
+
+.nosotros h3 {
+    color: var(--dorado);
+    margin-top: 30px;
+}
+
+/* =========================================
+   14. DISEÑO PARA CELULARES
+========================================= */
 @media (max-width: 600px) {
+
+    header h1 {
+        font-size: 30px;
+    }
+
+    nav a {
+        display: inline-block;
+        margin: 7px;
+        font-size: 13px;
+    }
+
+    .hero {
+        padding: 55px 15px;
+    }
+
+    .hero h2 {
+        font-size: 30px;
+    }
+
+    .tarjeta-producto {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .contenedor-carrusel img {
+        height: 160px;
+    }
+
     footer {
         padding: 18px 10px;
         font-size: 14px;
     }
 }
-/* TAMAÑO DE LAS IMAGENES DEL CATALOGO */
-.tarjeta-producto img {
+
+/* =========================================
+   BUSCADOR DE PRODUCTOS
+========================================= */
+
+.buscador {
+    max-width: 450px;
+    margin: 25px auto;
+}
+
+.buscador input {
     width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 10px;
+    padding: 14px 18px;
+    border: 1px solid var(--dorado);
+    border-radius: 25px;
+    background-color: var(--blanco);
+    color: var(--texto);
+    font-size: 15px;
+    outline: none;
+}
+
+.buscador input:focus {
+    border-color: var(--rosado-fuerte);
+    box-shadow: 0 0 6px var(--rosado-fuerte);
+}
+
+
+/* ESTILO DEL CONTADOR DE PRODUCTOS */
+#contador-productos {
+    display: inline-block;
+    background-color: var(--rosado);
+    color: var(--texto);
+    border: 1px solid var(--dorado);
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 15px auto;
 }

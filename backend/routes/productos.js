@@ -1,115 +1,111 @@
-// Importar Express
-const express = require("express");
 
-// Crear un enrutador
+// 1. Importar Express y el modelo de productos
+const express = require("express");
+const Producto = require("../models/Producto");
+
+// 2. Crear un enrutador
 const router = express.Router();
 
-// Lista inicial de productos
-const productos = [
-    {
-        id: 1,
-        nombre: "Flores eternas",
-        descripcion: "Arreglos florales hechos a mano",
-        precio: 45000,
-        categoria: "Flores"
-    },
-    {
-        id: 2,
-        nombre: "Anchetas saludables",
-        descripcion: "Detalles con frutas y productos saludables",
-        precio: 55000,
-        categoria: "Anchetas"
-    },
-    {
-        id: 3,
-        nombre: "Cajas sorpresa",
-        descripcion: "Cajas personalizadas para ocasiones especiales",
-        precio: 60000,
-        categoria: "Cajas sorpresa"
-    }
-];
+// 3. Obtener todos los productos
+router.get("/", async (req, res) => {
+    try {
+        console.log("Consultando productos desde MongoDB");
+        const productos = await Producto.find();
 
-// Obtener todos los productos
-router.get("/", (req, res) => {
-    res.json(productos);
-});
-
-// Obtener un producto por su ID
-router.get("/:id", (req, res) => {
-    const id = Number(req.params.id);
-
-    const producto = productos.find((item) => item.id === id);
-
-    if (!producto) {
-        return res.status(404).json({
-            mensaje: "Producto no encontrado"
+        res.json(productos);
+    } catch (error) {
+        res.status(500).json({
+            mensaje: "Error al consultar los productos"
         });
     }
-
-    res.json(producto);
 });
 
-// Agregar un producto nuevo
-router.post("/", (req, res) => {
-    const nuevoProducto = {
-        id: productos.length + 1,
-        nombre: req.body.nombre,
-        descripcion: req.body.descripcion,
-        precio: req.body.precio,
-        categoria: req.body.categoria
-    };
+// 4. Obtener un producto por su ID
+router.get("/:id", async (req, res) => {
+    try {
+        const producto = await Producto.findById(req.params.id);
 
-    productos.push(nuevoProducto);
+        if (!producto) {
+            return res.status(404).json({
+                mensaje: "Producto no encontrado"
+            });
+        }
 
-    res.status(201).json({
-        mensaje: "Producto agregado correctamente",
-        producto: nuevoProducto
-    });
-});
-
-// Eliminar un producto por su ID
-router.delete("/:id", (req, res) => {
-    const id = Number(req.params.id);
-
-    const indice = productos.findIndex((item) => item.id === id);
-
-    if (indice === -1) {
-        return res.status(404).json({
-            mensaje: "Producto no encontrado"
+        res.json(producto);
+    } catch (error) {
+        res.status(500).json({
+            mensaje: "Error al buscar el producto"
         });
     }
-
-    productos.splice(indice, 1);
-
-    res.json({
-        mensaje: "Producto eliminado correctamente"
-    });
 });
 
-// Actualizar un producto por su ID
-router.put("/:id", (req, res) => {
-    const id = Number(req.params.id);
+// 5. Agregar un producto nuevo
+router.post("/", async (req, res) => {
+    try {
+        const nuevoProducto = new Producto(req.body);
 
-    const producto = productos.find((item) => item.id === id);
+        await nuevoProducto.save();
 
-    if (!producto) {
-        return res.status(404).json({
-            mensaje: "Producto no encontrado"
+        res.status(201).json({
+            mensaje: "Producto agregado correctamente",
+            producto: nuevoProducto
+        });
+    } catch (error) {
+        res.status(400).json({
+            mensaje: "Error al agregar el producto"
         });
     }
-
-    producto.nombre = req.body.nombre;
-    producto.descripcion = req.body.descripcion;
-    producto.precio = req.body.precio;
-    producto.categoria = req.body.categoria;
-
-    res.json({
-        mensaje: "Producto actualizado correctamente",
-        producto: producto
-    });
 });
 
-// Exportar las rutas
+// 6. Eliminar un producto por su ID
+router.delete("/:id", async (req, res) => {
+    try {
+        const producto = await Producto.findByIdAndDelete(req.params.id);
+
+        if (!producto) {
+            return res.status(404).json({
+                mensaje: "Producto no encontrado"
+            });
+        }
+
+        res.json({
+            mensaje: "Producto eliminado correctamente"
+        });
+    } catch (error) {
+        res.status(500).json({
+            mensaje: "Error al eliminar el producto"
+        });
+    }
+});
+
+// 7. Actualizar un producto por su ID
+router.put("/:id", async (req, res) => {
+    try {
+        const producto = await Producto.findByIdAndUpdate(
+            req.params.id,
+            req.body,
+            {
+                new: true,
+                runValidators: true
+            }
+        );
+
+        if (!producto) {
+            return res.status(404).json({
+                mensaje: "Producto no encontrado"
+            });
+        }
+
+        res.json({
+            mensaje: "Producto actualizado correctamente",
+            producto: producto
+        });
+    } catch (error) {
+        res.status(400).json({
+            mensaje: "Error al actualizar el producto"
+        });
+    }
+});
+
+// 8. Exportar las rutas
 module.exports = router;
-
-
