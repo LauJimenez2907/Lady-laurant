@@ -44,13 +44,22 @@ function enviarPedido(evento) {
         return;
     }
 
-    // Mostrar mensaje de confirmacion
-    alert(
-        "¡Gracias, " + nombre + "!\n\n" +
-        "Recibimos tu solicitud de: " + producto + "\n" +
+   
+    // Crear el mensaje con los datos del pedido
+    const textoPedido =
+        "¡Hola! Quiero realizar un pedido en Lady Laurant.\n\n" +
+        "Nombre: " + nombre + "\n" +
+        "Producto: " + producto + "\n" + 
         "Teléfono: " + telefono + "\n" +
-        "Detalles de tu regalo: " + (mensaje || "Sin detalles adicionales")
-    );
+        "Detalles: " + (mensaje || "Sin detalles adicionales");
+
+    // Preparar el enlace de WhatsApp
+    const enlaceWhatsApp =
+        "https://wa.me/573027140362?text=" +
+        encodeURIComponent(textoPedido);
+
+    // Abrir WhatsApp con el pedido escrito
+    window.open(enlaceWhatsApp, "_blank");
 
 }
 
