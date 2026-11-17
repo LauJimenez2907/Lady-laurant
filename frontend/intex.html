@@ -40,6 +40,7 @@
         <a href="#inicio">Inicio</a>
         <a href="#nosotros">Nosotros</a>
         <a href="#catalogo">Catálogo</a>
+        <a href="#carrito">Mi carrito</a>
         <a href="#contacto">Contacto</a>
     </nav>
 
@@ -119,17 +120,11 @@
         <div class="categorias">
 
             <button onclick="filtrarCategoria('Todos')">Todos</button>
-
             <button onclick="filtrarCategoria('Flores')">Flores</button>
-
             <button onclick="filtrarCategoria('Anchetas')">Anchetas</button>
-
             <button onclick="filtrarCategoria('Cajas sorpresa')">Cajas sorpresa</button>
-
             <button onclick="filtrarCategoria('Personalizados')">Personalizados</button>
-
             <button onclick="filtrarCategoria('Regalos')">Regalos</button>
-
             <button onclick="filtrarCategoria('Belleza')">Belleza</button>
 
         </div>
@@ -145,6 +140,30 @@
             <!-- AQUI SE MOSTRARAN LOS PRODUCTOS DE MONGODB -->
 
         </div>
+
+    </section>
+
+    <!-- CARRITO DE COMPRAS -->
+    <section id="carrito">
+
+        <h2>Mi carrito de compras</h2>
+
+        <p>Estos son los productos que deseas llevar.</p>
+
+        <!-- PRODUCTOS AGREGADOS -->
+        <div id="lista-carrito">
+
+            <p>Tu carrito está vacío.</p>
+
+        </div>
+
+        <!-- TOTAL DE LA COMPRA -->
+        <h3 id="total-carrito">Total: $0</h3>
+
+        <!-- BOTON PARA FINALIZAR -->
+        <button onclick="finalizarCompra()">
+            Finalizar compra
+        </button>
 
     </section>
 

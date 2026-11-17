@@ -9,6 +9,9 @@ let productosCargados = [];
 // Guardar la categoria seleccionada
 let categoriaSeleccionada = "Todos";
 
+// Guardar los productos agregados al carrito
+let carrito = [];
+
 
 // =========================================
 // 2. FUNCION PARA MOSTRAR UN MENSAJE
@@ -155,8 +158,12 @@ function mostrarProductos() {
 
             <button onclick="solicitarProducto('${producto.nombre}')">
                 Solicitar producto
-            </button>
-        `;
+            </button> 
+            
+            <button onclick="agregarAlCarrito('${producto._id}')">
+    Agregar al carrito
+</button>
+ `;
 
         // Agregar la tarjeta al catalogo
         contenedor.appendChild(tarjeta);
@@ -243,3 +250,161 @@ function solicitarProducto(nombreProducto) {
 // =========================================
 
 document.addEventListener("DOMContentLoaded", cargarProductos);
+
+
+ // =========================================
+ // 9. FUNCION PARA AGREGAR PRODUCTOS AL CARRITO
+ // =========================================
+
+function agregarAlCarrito(idProducto) {
+
+    
+
+    // Buscar el producto seleccionado
+    const producto = productosCargados.find(
+        producto => producto._id === idProducto
+    );
+
+    // Verificar que el producto exista
+    if (!producto) {
+        alert("No encontramos ese producto.");
+        return;
+    }
+
+    // Verificar si el producto ya esta en el carrito
+    const productoExistente = carrito.find(
+        item => item._id === idProducto
+    );
+
+    if (productoExistente) {
+
+        // Aumentar la cantidad
+        productoExistente.cantidad++;
+
+    } else {
+
+        // Agregar el producto por primera vez
+        carrito.push({
+            ...producto,
+            cantidad: 1
+        });
+
+    }
+
+    // Actualizar el carrito en pantalla
+    mostrarCarrito();
+
+    alert("¡Producto agregado al carrito!");
+
+}
+
+ // =========================================
+ // 10. FUNCION PARA MOSTRAR EL CARRITO
+ // =========================================
+
+function mostrarCarrito() {
+
+    // Obtener el contenedor del carrito
+    const contenedor = document.getElementById("lista-carrito");
+
+    // Obtener el espacio del total
+    const totalElemento = document.getElementById("total-carrito");
+
+    // Limpiar el contenido anterior
+    contenedor.innerHTML = "";
+
+    // Variable para calcular el total
+    let total = 0;
+
+    // Verificar si el carrito esta vacio
+    if (carrito.length === 0) {
+
+        contenedor.innerHTML = "<p>Tu carrito está vacío.</p>";
+
+        totalElemento.textContent = "Total: $0";
+
+        return;
+    }
+
+    // Recorrer los productos del carrito
+    carrito.forEach(producto => {
+
+        // Calcular el subtotal
+        const subtotal = producto.precio * producto.cantidad;
+
+        // Sumar al total
+        total += subtotal;
+
+        // Crear el elemento del producto
+        const elemento = document.createElement("div");
+
+        elemento.classList.add("producto-carrito");
+
+        elemento.innerHTML = `
+            <h3>${producto.nombre}</h3>
+
+            <p>Precio: $${producto.precio.toLocaleString("es-CO")}</p>
+
+            <p>Cantidad: ${producto.cantidad}</p>
+
+            <p>Subtotal: $${subtotal.toLocaleString("es-CO")}</p>
+        `;
+
+        // Agregar el producto al carrito visual
+        contenedor.appendChild(elemento);
+
+    });
+
+    // Mostrar el total de la compra
+    totalElemento.textContent =
+        "Total: $" + total.toLocaleString("es-CO");
+
+}
+
+
+ // =========================================
+ // 11. FUNCION PARA FINALIZAR LA COMPRA
+ // =========================================
+
+function finalizarCompra() {
+
+    // Verificar si el carrito esta vacio
+    if (carrito.length === 0) {
+
+        alert("Tu carrito está vacío. Agrega productos antes de continuar.");
+
+        return;
+    }
+
+    // Crear el mensaje de WhatsApp
+    let mensajePedido = "¡Hola! Quiero realizar un pedido en Lady Laurant.\n\n";
+
+    let total = 0;
+
+    // Recorrer los productos del carrito
+    carrito.forEach(producto => {
+
+        const subtotal = producto.precio * producto.cantidad;
+
+        total += subtotal;
+
+        mensajePedido +=
+            "Producto: " + producto.nombre + "\n" +
+            "Cantidad: " + producto.cantidad + "\n" +
+            "Subtotal: $" + subtotal.toLocaleString("es-CO") + "\n\n";
+
+    });
+
+    // Agregar el total de la compra
+    mensajePedido +=
+        "TOTAL DEL PEDIDO: $" + total.toLocaleString("es-CO");
+
+    // Preparar el enlace de WhatsApp
+    const enlaceWhatsApp =
+        "https://wa.me/573027140362?text=" +
+        encodeURIComponent(mensajePedido);
+
+    // Abrir WhatsApp
+    window.open(enlaceWhatsApp, "_blank");
+
+}
