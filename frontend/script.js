@@ -31,20 +31,26 @@ function enviarPedido(evento) {
     evento.preventDefault();
 
     // Obtener los datos del formulario
-    const nombre = document.getElementById("nombre").value;
-    const producto = document.getElementById("producto").value;
-    const telefono = document.getElementById("telefono").value;
+    const nombre = document.getElementById("nombre").value.trim();
+    const producto = document.getElementById("producto").value.trim();
+    const telefono = document.getElementById("telefono").value.trim();
+    const mensaje = document.getElementById("mensaje").value.trim();
 
     // Verificar que los campos esten completos
     if (nombre === "" || producto === "" || telefono === "") {
 
-        alert("Por favor, completa todos los campos.");
+        alert("Por favor, completa todos los campos obligatorios.");
 
         return;
     }
 
     // Mostrar mensaje de confirmacion
-    alert("¡Gracias, " + nombre + "! Recibimos tu solicitud de " + producto + ".");
+    alert(
+        "¡Gracias, " + nombre + "!\n\n" +
+        "Recibimos tu solicitud de: " + producto + "\n" +
+        "Teléfono: " + telefono + "\n" +
+        "Detalles de tu regalo: " + (mensaje || "Sin detalles adicionales")
+    );
 
 }
 
@@ -117,14 +123,6 @@ function mostrarProductos() {
 
     });
 
-    // Verificar si hay productos disponibles
-    if (productosFiltrados.length === 0) {
-
-        contenedor.innerHTML = "<p>No encontramos productos con esa busqueda.</p>";
-
-        return;
-    }
-
     // Recorrer los productos filtrados
     productosFiltrados.forEach(producto => {
 
@@ -157,11 +155,17 @@ function mostrarProductos() {
     });
 
     // Actualizar el contador de productos
-const contador = document.getElementById("contador-productos");
+    const contador = document.getElementById("contador-productos");
 
-if (contador) {
-    contador.textContent = `Mostrando ${productosFiltrados.length} productos`;
-}   
+    if (contador) {
+        contador.textContent = `Mostrando ${productosFiltrados.length} productos`;
+    }
+
+    // Mostrar mensaje si no hay productos
+    if (productosFiltrados.length === 0) {
+        contenedor.innerHTML = "<p>No encontramos productos con esa busqueda.</p>";
+    }
+
 }
 
 
@@ -171,7 +175,7 @@ if (contador) {
 
 function buscarProductos() {
 
-    // Actualizar los productos segun lo que escribe el client
+    // Actualizar los productos segun lo que escribe el cliente
     mostrarProductos();
 
 }
@@ -180,7 +184,6 @@ function buscarProductos() {
 // =========================================
 // 7. FUNCION PARA FILTRAR POR CATEGORIA
 // =========================================
-
 
 function filtrarCategoria(categoria) {
 
@@ -205,6 +208,7 @@ function filtrarCategoria(categoria) {
 
     // Mostrar los productos de esa categoria
     mostrarProductos();
+
 }
 
 
