@@ -1,7 +1,6 @@
 
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,87 +8,204 @@
     <title>Catálogo | Lady Laurant</title>
 
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="chatbot/chatbot.css">
 </head>
 
 <body>
 
-    <!-- ENCABEZADO -->
-    <header>
-        <h1>Lady Laurant</h1>
-        <p>Detalles hechos con amor</p>
+    <!-- 1. ENCABEZADO -->
+    <header class="encabezado-principal">
+
+        <div class="marca">
+            <h1>Lady Laurant</h1>
+            <p>BELLEZA MANUAL</p>
+        </div>
+
+        <nav class="menu-navegacion">
+            <a href="intex.html">Inicio</a>
+            <a href="nosotros.html">Nosotros</a>
+            <a href="catalogo.html" class="activo">Catálogo</a>
+            <a href="contacto.html">Contacto</a>
+            <a href="carrito.html">Carrito 🛍️</a>
+        </nav>
+
     </header>
 
-    <!-- MENU DE NAVEGACION -->
-    <nav>
-        <a href="intex.html">Inicio</a>
-        <a href="nosotros.html">Nosotros</a>
-        <a href="catalogo.html">Catálogo</a>
-        <a href="carrito.html">Mi carrito</a>
-        <a href="contacto.html">Contacto</a>
-    </nav>
 
-    <!-- TITULO DEL CATALOGO -->
-    <section>
-        <h2>Nuestro catálogo</h2>
+    <!-- 2. PRESENTACIÓN DEL CATÁLOGO -->
+    <main>
 
-        <p>
-            Encuentra el detalle perfecto para cada ocasión.
+        <section class="catalogo-portada">
+
+            <div class="catalogo-portada-contenido">
+
+                <span class="catalogo-etiqueta">
+                    DETALLES HECHOS CON AMOR
+                </span>
+
+                <h2>Nuestro catálogo</h2>
+
+                <p>
+                    Encuentra regalos únicos, personalizados y elaborados
+                    especialmente para sorprender a quienes más quieres.
+                </p>
+
+                <a href="#productos-tienda" class="boton-catalogo">
+                    Descubrir productos
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- 3. INTRODUCCIÓN -->
+        <section class="catalogo-introduccion">
+
+            <h2>Un detalle especial para cada ocasión</h2>
+
+            <p>
+                Explora nuestras creaciones y encuentra ese regalo
+                perfecto para celebrar, agradecer o sorprender.
+                Cada producto está elaborado con dedicación y amor.
+            </p>
+
+        </section>
+
+
+        <!-- 4. ZONA DE PRODUCTOS -->
+        <section class="seccion-tienda" id="productos-tienda">
+
+            <div class="titulo-seccion-catalogo">
+
+                <span>DESCUBRE NUESTRAS CREACIONES</span>
+
+                <h2>Encuentra tu detalle ideal</h2>
+
+                <p>
+                    Explora nuestras categorías y elige tu favorito.
+                </p>
+
+            </div>
+
+
+            <!-- 5. BUSCADOR -->
+            <div class="buscador-catalogo">
+
+                <span class="icono-busqueda">⌕</span>
+
+                <input
+                    type="text"
+                    id="buscar-producto"
+                    placeholder="¿Qué detalle estás buscando?"
+                    oninput="buscarProductos()"
+                >
+
+            </div>
+
+
+            <!-- 6. FILTROS -->
+            <div class="filtros-catalogo">
+
+                <button onclick="filtrarCategoria('Todos')" class="filtro-activo">
+                    Todos
+                </button>
+
+                <button onclick="filtrarCategoria('Flores')">
+                    Flores
+                </button>
+
+                <button onclick="filtrarCategoria('Anchetas')">
+                    Anchetas
+                </button>
+
+                <button onclick="filtrarCategoria('Cajas sorpresa')">
+                    Cajas sorpresa
+                </button>
+
+                <button onclick="filtrarCategoria('Personalizados')">
+                    Personalizados
+                </button>
+
+                <button onclick="filtrarCategoria('Regalos')">
+                    Regalos
+                </button>
+
+                <button onclick="filtrarCategoria('Belleza')">
+                    Belleza
+                </button>
+
+            </div>
+
+
+            <!-- 7. CONTADOR DE PRODUCTOS -->
+            <div class="informacion-productos">
+
+                <p id="contador-productos">
+                    Descubre nuestros productos
+                </p>
+
+                <span>Hechos con amor para ti</span>
+
+            </div>
+
+
+            <!-- 8. PRODUCTOS CARGADOS DESDE MONGODB -->
+            <div class="contenedor-productos" id="lista-productos">
+
+                <p class="mensaje-cargando">
+                    Cargando nuestros productos...
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- 9. MENSAJE FINAL -->
+        <section class="catalogo-final">
+
+            <div>
+                <span>UN REGALO, MUCHAS EMOCIONES</span>
+
+                <h2>Los mejores detalles tienen tu toque especial</h2>
+
+                <p>
+                    ¿Tienes una idea diferente? Podemos ayudarte
+                    a crear un regalo personalizado.
+                </p>
+
+                <a href="contacto.html" class="boton-catalogo">
+                    Personaliza tu regalo
+                </a>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- 10. PIE DE PÁGINA -->
+    <footer class="pie-principal">
+
+        <h2>Lady Laurant</h2>
+
+        <p>Detalles hechos con amor</p>
+
+        <div class="enlaces-footer">
+            <a href="intex.html">Inicio</a>
+            <a href="nosotros.html">Nosotros</a>
+            <a href="catalogo.html">Catálogo</a>
+            <a href="contacto.html">Contacto</a>
+        </div>
+
+        <p class="copyright">
+            © 2026 Lady Laurant. Todos los derechos reservados.
         </p>
 
-        <!-- BUSCADOR -->
-        <input
-            type="text"
-            id="buscar-producto"
-            placeholder="Buscar un producto..."
-            oninput="buscarProductos()"
-        >
-
-        <!-- CATEGORIAS -->
-        <div class="categorias">
-
-            <button onclick="filtrarCategoria('Todos')">Todos</button>
-
-            <button onclick="filtrarCategoria('Flores')">Flores</button>
-
-            <button onclick="filtrarCategoria('Anchetas')">Anchetas</button>
-
-            <button onclick="filtrarCategoria('Cajas sorpresa')">
-                Cajas sorpresa
-            </button>
-
-            <button onclick="filtrarCategoria('Personalizados')">
-                Personalizados
-            </button>
-
-            <button onclick="filtrarCategoria('Regalos')">Regalos</button>
-
-            <button onclick="filtrarCategoria('Belleza')">Belleza</button>
-
-        </div>
-
-        <!-- CONTADOR -->
-        <p id="contador-productos">Cargando productos...</p>
-
-        <!-- PRODUCTOS -->
-        <div id="lista-productos" class="contenedor-productos">
-        </div>
-
-        <br>
-
-        <a href="carrito.html" class="boton">
-            Ir a mi carrito
-        </a>
-
-    </section>
-
-    <!-- PIE DE PAGINA -->
-    <footer>
-        <p>Lady Laurant - Detalles hechos con amor</p>
-        <p>Gracias por apoyar nuestros productos hechos a mano.</p>
     </footer>
 
-    <!-- JAVASCRIPT -->
+
+    <!-- 11. SCRIPTS -->
     <script src="script.js"></script>
     <script src="chatbot/chatbot.js"></script>
 

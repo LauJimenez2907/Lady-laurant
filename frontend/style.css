@@ -1235,3 +1235,316 @@ nav a.activo {
     }
 
 }
+
+
+
+/* =========================================
+   31. PORTADA DEL CATALOGO
+========================================= */
+
+.catalogo-portada {
+    min-height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #fff0f6, #fff9fc, #fce8f1);
+}
+
+.catalogo-portada-contenido {
+    max-width: 750px;
+}
+
+.catalogo-etiqueta,
+.titulo-seccion-catalogo span,
+.catalogo-final span {
+    color: #c9a45c;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.catalogo-portada h2 {
+    color: #8e6076;
+    font-family: Georgia, serif;
+    font-size: 48px;
+    margin: 18px 0;
+}
+
+.catalogo-portada p {
+    color: #705b66;
+    font-size: 17px;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+.boton-catalogo {
+    display: inline-block;
+    padding: 14px 28px;
+    border-radius: 30px;
+    background: #e8a5c2;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.boton-catalogo:hover {
+    background: #d88eae;
+    transform: translateY(-3px);
+}
+
+
+/* =========================================
+   32. INTRODUCCION DEL CATALOGO
+========================================= */
+
+.catalogo-introduccion {
+    max-width: 850px;
+    margin: auto;
+    padding: 65px 25px 45px;
+    text-align: center;
+}
+
+.catalogo-introduccion h2 {
+    color: #94677e;
+    font-family: Georgia, serif;
+    font-size: 30px;
+    margin-bottom: 18px;
+}
+
+.catalogo-introduccion p {
+    color: #77636e;
+    line-height: 1.9;
+    font-size: 16px;
+}
+
+
+/* =========================================
+   33. SECCION DE PRODUCTOS
+========================================= */
+
+.seccion-tienda {
+    padding: 45px 7% 75px;
+    background: #fffafd;
+}
+
+.titulo-seccion-catalogo {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.titulo-seccion-catalogo h2 {
+    color: #94677e;
+    font-family: Georgia, serif;
+    font-size: 34px;
+    margin: 13px 0;
+}
+
+.titulo-seccion-catalogo p {
+    color: #806d77;
+}
+
+
+/* =========================================
+   34. BUSCADOR
+========================================= */
+
+.buscador-catalogo {
+    max-width: 650px;
+    margin: 0 auto 30px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 5px 20px;
+    border: 1px solid #efd6e1;
+    border-radius: 35px;
+    background: white;
+    box-shadow: 0 5px 18px rgba(190, 130, 160, 0.08);
+}
+
+.icono-busqueda {
+    color: #c9a45c;
+    font-size: 30px;
+}
+
+.buscador-catalogo input {
+    width: 100%;
+    padding: 14px 5px;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #5c4652;
+    font-size: 15px;
+}
+
+
+/* =========================================
+   35. FILTROS DE CATEGORIAS
+========================================= */
+
+.filtros-catalogo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 35px;
+}
+
+.filtros-catalogo button {
+    padding: 11px 20px;
+    border: 1px solid #edcbd9;
+    border-radius: 25px;
+    background: white;
+    color: #94677e;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.filtros-catalogo button:hover,
+.filtros-catalogo button.filtro-activo {
+    background: #e8a5c2;
+    color: white;
+    border-color: #e8a5c2;
+}
+
+
+/* =========================================
+   36. INFORMACION DE PRODUCTOS
+========================================= */
+
+.informacion-productos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 1250px;
+    margin: 0 auto 22px;
+    color: #94677e;
+}
+
+.informacion-productos p {
+    font-weight: bold;
+}
+
+.informacion-productos span {
+    color: #b18b9e;
+    font-size: 13px;
+}
+
+.mensaje-cargando {
+    width: 100%;
+    text-align: center;
+    padding: 35px;
+    color: #94677e;
+}
+
+
+/* =========================================
+   37. MENSAJE FINAL DEL CATALOGO
+========================================= */
+
+.catalogo-final {
+    padding: 75px 25px;
+    text-align: center;
+    background: linear-gradient(135deg, #fff0f6, #fff9fc);
+}
+
+.catalogo-final div {
+    max-width: 750px;
+    margin: auto;
+}
+
+.catalogo-final h2 {
+    color: #94677e;
+    font-family: Georgia, serif;
+    font-size: 34px;
+    margin: 15px 0;
+}
+
+.catalogo-final p {
+    color: #77636e;
+    line-height: 1.8;
+    margin-bottom: 25px;
+}
+
+
+/* =========================================
+   38. ADAPTACION A TABLETS
+========================================= */
+
+@media (max-width: 900px) {
+
+    .catalogo-portada h2 {
+        font-size: 40px;
+    }
+
+    .seccion-tienda {
+        padding: 40px 4%;
+    }
+
+    .titulo-seccion-catalogo h2 {
+        font-size: 29px;
+    }
+
+}
+
+
+/* =========================================
+   39. ADAPTACION A CELULARES
+========================================= */
+
+@media (max-width: 600px) {
+
+    .catalogo-portada {
+        min-height: 300px;
+        padding: 45px 20px;
+    }
+
+    .catalogo-portada h2 {
+        font-size: 34px;
+    }
+
+    .catalogo-portada p {
+        font-size: 15px;
+    }
+
+    .catalogo-introduccion {
+        padding: 45px 20px;
+    }
+
+    .catalogo-introduccion h2 {
+        font-size: 25px;
+    }
+
+    .titulo-seccion-catalogo h2 {
+        font-size: 27px;
+    }
+
+    .buscador-catalogo {
+        padding: 3px 14px;
+    }
+
+    .filtros-catalogo {
+        gap: 8px;
+    }
+
+    .filtros-catalogo button {
+        padding: 9px 14px;
+        font-size: 12px;
+    }
+
+    .informacion-productos {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .catalogo-final h2 {
+        font-size: 27px;
+    }
+
+}
