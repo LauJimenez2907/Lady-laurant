@@ -12,7 +12,9 @@ const verificarAdministrador = require("./middleware/auth");
 // =====================================
 
 const app = express();
-const PORT = 3000;
+
+// Puerto automático de Render o puerto 3000 local
+const PORT = process.env.PORT || 3000;
 
 // =====================================
 // MIDDLEWARES
@@ -67,11 +69,12 @@ const iniciarServidor = async () => {
         await conectarDB();
 
         app.listen(PORT, () => {
-            console.log(`Servidor funcionando en http://localhost:${PORT}`);
+            console.log(`Servidor funcionando en el puerto ${PORT}`);
         });
 
     } catch (error) {
         console.error("Error al iniciar el servidor:", error.message);
+        process.exit(1);
     }
 };
 
