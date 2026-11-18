@@ -1,19 +1,6 @@
 
 /* =========================================
-   1. COLORES PRINCIPALES
-========================================= */
-
-:root {
-    --rosado: #f8d7e5;
-    --rosado-fuerte: #e8a5c2;
-    --blanco: #ffffff;
-    --dorado: #c9a45c;
-    --texto: #5c4652;
-    --fondo: #fff9fc;
-}
-
-/* =========================================
-   2. CONFIGURACION GENERAL
+   1. ESTILOS GENERALES
 ========================================= */
 
 * {
@@ -23,187 +10,448 @@
 }
 
 body {
+    background: #fff9fc;
+    color: #5c4652;
     font-family: Arial, sans-serif;
-    background-color: var(--fondo);
-    color: var(--texto);
+}
+
+
+/* =========================================
+   2. ENCABEZADO
+========================================= */
+
+.admin-encabezado {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 7%;
+    background: white;
+    border-bottom: 1px solid #f1dce6;
+    box-shadow: 0 3px 15px rgba(190, 130, 160, 0.06);
+}
+
+.admin-marca h1 {
+    color: #94677e;
+    font-family: Georgia, serif;
+    font-size: 27px;
+}
+
+.admin-marca span {
+    display: block;
+    margin-top: 5px;
+    color: #c9a45c;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.admin-volver {
+    padding: 11px 20px;
+    border: 1px solid #e8a5c2;
+    border-radius: 25px;
+    color: #bd829e;
+    font-size: 13px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.admin-volver:hover {
+    background: #e8a5c2;
+    color: white;
+}
+
+
+/* =========================================
+   3. CONTENEDOR PRINCIPAL
+========================================= */
+
+.admin-contenedor {
+    width: 90%;
+    max-width: 1150px;
+    margin: 45px auto;
+}
+
+
+/* =========================================
+   4. BIENVENIDA
+========================================= */
+
+.admin-bienvenida {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 40px;
+    margin-bottom: 30px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #fff0f6, #fff9fc, #fce8f1);
+}
+
+.admin-etiqueta {
+    color: #c9a45c;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.admin-bienvenida h2 {
+    margin: 14px 0;
+    color: #94677e;
+    font-family: Georgia, serif;
+    font-size: 34px;
+}
+
+.admin-bienvenida p {
+    max-width: 650px;
+    color: #806d77;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.admin-decoracion {
+    color: #e8a5c2;
+    font-family: Georgia, serif;
+    font-size: 90px;
+}
+
+
+/* =========================================
+   5. TARJETAS DEL PANEL
+========================================= */
+
+.admin-tarjeta {
+    padding: 32px;
+    margin-bottom: 30px;
+    border: 1px solid #f0dce5;
+    border-radius: 20px;
+    background: white;
+    box-shadow: 0 7px 25px rgba(190, 130, 160, 0.07);
+}
+
+.admin-titulo-seccion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 28px;
+}
+
+.admin-titulo-seccion span {
+    color: #c9a45c;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.admin-titulo-seccion h2 {
+    margin-top: 9px;
+    color: #94677e;
+    font-family: Georgia, serif;
+    font-size: 27px;
+}
+
+.admin-icono {
+    width: 43px;
+    height: 43px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #fce8f1;
+    color: #bd829e;
+    font-size: 23px;
+}
+
+
+/* =========================================
+   6. CAMPOS DEL FORMULARIO
+========================================= */
+
+.admin-campos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+}
+
+.admin-campo {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.admin-campo-completo {
+    grid-column: 1 / -1;
+}
+
+.admin-campo label {
+    color: #705b66;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.admin-campo input,
+.admin-campo textarea,
+.admin-campo select {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #ead4df;
+    border-radius: 10px;
+    outline: none;
+    background: #fffafd;
+    color: #5c4652;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.admin-campo input:focus,
+.admin-campo textarea:focus,
+.admin-campo select:focus {
+    border-color: #e8a5c2;
+    box-shadow: 0 0 0 3px rgba(232, 165, 194, 0.15);
+}
+
+.admin-campo textarea {
+    resize: vertical;
+}
+
+
+/* =========================================
+   7. BOTONES DEL FORMULARIO
+========================================= */
+
+.admin-acciones-formulario {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.admin-boton-guardar,
+.admin-boton-cancelar {
+    padding: 14px 25px;
+    border: none;
+    border-radius: 25px;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.admin-boton-guardar {
+    background: #e8a5c2;
+    color: white;
+}
+
+.admin-boton-guardar:hover {
+    background: #d88eae;
+    transform: translateY(-2px);
+}
+
+.admin-boton-cancelar {
+    border: 1px solid #e8a5c2;
+    background: white;
+    color: #bd829e;
+}
+
+.admin-boton-cancelar:hover {
+    background: #fff0f6;
+}
+
+.admin-mensaje {
+    margin-top: 18px;
+    color: #94677e;
+    font-size: 14px;
     line-height: 1.6;
 }
 
-/* =========================================
-   3. ENCABEZADO
-========================================= */
-
-header {
-    background-color: var(--rosado);
-    text-align: center;
-    padding: 30px;
-    border-bottom: 3px solid var(--dorado);
-}
-
-header h1 {
-    color: var(--dorado);
-    font-size: 35px;
-}
 
 /* =========================================
-   4. NAVEGACION
+   8. LISTADO DE PRODUCTOS
 ========================================= */
 
-nav {
-    background-color: var(--blanco);
-    padding: 15px;
-    text-align: center;
-}
-
-nav a {
-    color: var(--texto);
-    text-decoration: none;
-    font-weight: bold;
-}
-
-nav a:hover {
-    color: var(--dorado);
-}
-
-/* =========================================
-   5. CONTENIDO PRINCIPAL
-========================================= */
-
-main {
-    width: 90%;
-    max-width: 1000px;
-    margin: 30px auto;
-}
-
-section {
-    background-color: var(--blanco);
-    padding: 25px;
+.admin-descripcion-listado {
+    margin-top: -15px;
     margin-bottom: 25px;
-    border: 1px solid var(--rosado);
-    border-radius: 15px;
-    box-shadow: 0 3px 10px rgba(201, 164, 92, 0.12);
+    color: #806d77;
+    font-size: 14px;
+    line-height: 1.7;
 }
 
-h2 {
-    color: var(--dorado);
-    margin-bottom: 20px;
+.admin-cargando {
+    padding: 30px 10px;
+    color: #94677e;
     text-align: center;
 }
 
-/* =========================================
-   6. FORMULARIO
-========================================= */
-
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    max-width: 600px;
-    margin: auto;
-}
-
-label {
-    font-weight: bold;
-}
-
-input,
-textarea {
-    padding: 12px;
-    border: 1px solid var(--rosado-fuerte);
-    border-radius: 8px;
-    font-family: Arial, sans-serif;
-    width: 100%;
-}
-
-textarea {
-    resize: vertical;
-    min-height: 90px;
-}
 
 /* =========================================
-   7. BOTONES
+   9. TARJETAS DE PRODUCTOS
 ========================================= */
-
-button {
-    background-color: var(--rosado-fuerte);
-    color: var(--blanco);
-    border: 1px solid var(--dorado);
-    padding: 12px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-weight: bold;
-    margin-top: 5px;
-}
-
-button:hover {
-    background-color: var(--dorado);
-}
-
-/* =========================================
-   8. LISTA DE PRODUCTOS
-========================================= */
-
-#lista-administracion {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
 
 .producto-admin {
-    background-color: var(--fondo);
-    border: 1px solid var(--rosado);
-    border-radius: 12px;
-    padding: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 22px;
+    margin-bottom: 16px;
+    border: 1px solid #f0dce5;
+    border-radius: 14px;
+    background: #fffafd;
 }
 
 .producto-admin h3 {
-    color: var(--dorado);
+    margin-bottom: 8px;
+    color: #94677e;
+    font-size: 17px;
 }
 
 .producto-admin p {
     margin: 5px 0;
+    color: #806d77;
+    font-size: 13px;
+    line-height: 1.6;
 }
 
-/* =========================================
-   9. MENSAJES
-========================================= */
+.producto-admin strong {
+    color: #bd829e;
+}
 
-#mensaje {
-    text-align: center;
-    margin-bottom: 15px;
+.producto-admin button {
+    padding: 10px 16px;
+    margin: 4px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 12px;
     font-weight: bold;
+    transition: 0.3s;
 }
 
+.producto-admin button:hover {
+    transform: translateY(-2px);
+}
+
+.producto-admin button:first-of-type {
+    background: #fce8f1;
+    color: #94677e;
+}
+
+.producto-admin button:last-of-type {
+    background: #fff0f0;
+    color: #bd7777;
+}
+
+
 /* =========================================
-   10. PIE DE PAGINA
+   10. PIE DEL PANEL
 ========================================= */
 
-footer {
-    background-color: var(--rosado);
-    border-top: 2px solid var(--dorado);
+.admin-pie {
+    padding: 30px 15px;
     text-align: center;
-    padding: 20px;
 }
 
+.admin-pie h2 {
+    color: #94677e;
+    font-family: Georgia, serif;
+    font-size: 27px;
+}
+
+.admin-pie p {
+    margin-top: 9px;
+    color: #b18b9e;
+    font-size: 13px;
+}
+
+
 /* =========================================
-   11. DISEÑO PARA CELULARES
+   11. ADAPTACION A TABLETS
+========================================= */
+
+@media (max-width: 800px) {
+
+    .admin-contenedor {
+        width: 94%;
+    }
+
+    .admin-bienvenida {
+        padding: 30px;
+    }
+
+    .admin-decoracion {
+        font-size: 65px;
+    }
+
+}
+
+
+/* =========================================
+   12. ADAPTACION A CELULARES
 ========================================= */
 
 @media (max-width: 600px) {
 
-    main {
-        width: 95%;
+    .admin-encabezado {
+        padding: 17px 5%;
     }
 
-    section {
-        padding: 18px;
+    .admin-marca h1 {
+        font-size: 22px;
     }
 
-    header h1 {
-        font-size: 28px;
+    .admin-volver {
+        padding: 10px 13px;
+        font-size: 11px;
     }
 
-    button {
+    .admin-contenedor {
+        width: 92%;
+        margin: 25px auto;
+    }
+
+    .admin-bienvenida {
+        padding: 25px 20px;
+    }
+
+    .admin-bienvenida h2 {
+        font-size: 27px;
+    }
+
+    .admin-decoracion {
+        display: none;
+    }
+
+    .admin-tarjeta {
+        padding: 22px 17px;
+    }
+
+    .admin-titulo-seccion h2 {
+        font-size: 23px;
+    }
+
+    .admin-campos {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-campo-completo {
+        grid-column: auto;
+    }
+
+    .admin-acciones-formulario {
+        flex-direction: column;
+    }
+
+    .admin-acciones-formulario button {
         width: 100%;
     }
+
+    .producto-admin {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
 }
