@@ -5,25 +5,40 @@
 
 #chatbot {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    bottom: 22px;
+    right: 22px;
     z-index: 1000;
     font-family: Arial, sans-serif;
 }
 
 /* =========================================
-   2. BOTON PARA ABRIR EL CHAT
+   2. BOTÓN PARA ABRIR EL CHAT
 ========================================= */
 
 #chatbot-boton {
-    background-color: #e8a5c2;
-    color: #ffffff;
-    border: 2px solid #c9a45c;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    background: linear-gradient(135deg, #f8d7e5, #e8a5c2);
+    color: #5c4652;
+    border: 1px solid #c9a45c;
     padding: 14px 20px;
-    border-radius: 25px;
+    border-radius: 30px;
     cursor: pointer;
+    font-size: 14px;
     font-weight: bold;
-    box-shadow: 0 3px 10px rgba(201, 164, 92, 0.25);
+    box-shadow: 0 5px 18px rgba(201, 164, 92, 0.25);
+    transition: 0.3s ease;
+}
+
+#chatbot-boton:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 20px rgba(201, 164, 92, 0.35);
+}
+
+.chatbot-icono {
+    font-size: 20px;
+    color: #ffffff;
 }
 
 /* =========================================
@@ -32,15 +47,17 @@
 
 #chatbot-ventana {
     position: absolute;
-    bottom: 65px;
+    bottom: 70px;
     right: 0;
-    width: 320px;
-    height: 420px;
+    width: 350px;
+    height: 480px;
+    display: flex;
+    flex-direction: column;
     background-color: #ffffff;
-    border: 2px solid #e8a5c2;
-    border-radius: 15px;
+    border: 1px solid #e8a5c2;
+    border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(201, 164, 92, 0.2);
+    box-shadow: 0 8px 30px rgba(92, 70, 82, 0.16);
 }
 
 /* =========================================
@@ -48,36 +65,85 @@
 ========================================= */
 
 #chatbot-encabezado {
-    background-color: #f8d7e5;
+    background: linear-gradient(135deg, #f8d7e5, #fceaf1);
     color: #5c4652;
-    padding: 12px;
+    padding: 16px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-bottom: 1px solid #f2d4e0;
+}
+
+.chatbot-marca {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+}
+
+.chatbot-avatar {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    color: #c9a45c;
+    border: 1px solid #c9a45c;
+    border-radius: 50%;
+    font-family: Georgia, serif;
+    font-weight: bold;
+    font-size: 15px;
 }
 
 #chatbot-encabezado h3 {
-    font-size: 16px;
+    font-size: 15px;
+    margin: 0 0 5px;
+    color: #5c4652;
+}
+
+.chatbot-estado {
+    font-size: 11px;
+    color: #82717b;
 }
 
 #chatbot-cerrar {
+    width: 32px;
+    height: 32px;
     background-color: #ffffff;
     color: #5c4652;
     border: 1px solid #c9a45c;
-    padding: 5px 10px;
     border-radius: 50%;
+    font-size: 22px;
     cursor: pointer;
+    transition: 0.2s ease;
+}
+
+#chatbot-cerrar:hover {
+    background-color: #fff9fc;
+    transform: rotate(90deg);
 }
 
 /* =========================================
-   5. AREA DE MENSAJES
+   5. ÁREA DE MENSAJES
 ========================================= */
 
 #chatbot-mensajes {
-    height: 290px;
-    padding: 12px;
+    flex: 1;
+    min-height: 0;
+    padding: 15px;
     overflow-y: auto;
     background-color: #fff9fc;
+    display: flex;
+    flex-direction: column;
+}
+
+#chatbot-mensajes::-webkit-scrollbar {
+    width: 5px;
+}
+
+#chatbot-mensajes::-webkit-scrollbar-thumb {
+    background-color: #e8a5c2;
+    border-radius: 10px;
 }
 
 /* =========================================
@@ -87,11 +153,16 @@
 .mensaje-bot {
     background-color: #f8d7e5;
     color: #5c4652;
-    padding: 10px;
-    border-radius: 12px;
-    margin-bottom: 10px;
-    max-width: 85%;
+    padding: 12px 14px;
+    border-radius: 4px 16px 16px 16px;
+    margin: 0 0 12px;
+    max-width: 88%;
+    align-self: flex-start;
     text-align: left;
+    font-size: 13px;
+    line-height: 1.6;
+    white-space: pre-line;
+    box-shadow: 0 2px 5px rgba(92, 70, 82, 0.05);
 }
 
 /* =========================================
@@ -101,46 +172,111 @@
 .mensaje-usuario {
     background-color: #ffffff;
     color: #5c4652;
-    border: 1px solid #c9a45c;
-    padding: 10px;
-    border-radius: 12px;
-    margin: 10px 0 10px auto;
-    max-width: 85%;
+    border: 1px solid #e8a5c2;
+    padding: 12px 14px;
+    border-radius: 16px 4px 16px 16px;
+    margin: 0 0 12px auto;
+    max-width: 88%;
+    align-self: flex-end;
     text-align: right;
+    font-size: 13px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
 }
 
 /* =========================================
-   8. FORMULARIO DEL CHAT
+   8. PREGUNTAS RÁPIDAS
+========================================= */
+
+.chatbot-sugerencias {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin: 0 0 15px;
+}
+
+.chatbot-opcion {
+    background-color: #ffffff;
+    color: #8b6177;
+    border: 1px solid #e8a5c2;
+    border-radius: 20px;
+    padding: 8px 11px;
+    font-size: 11px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.chatbot-opcion:hover {
+    background-color: #f8d7e5;
+    border-color: #c9a45c;
+}
+
+/* =========================================
+   9. FORMULARIO DEL CHAT
 ========================================= */
 
 #chatbot-formulario {
     display: flex;
-    flex-direction: row;
-    gap: 5px;
-    padding: 8px;
+    align-items: center;
+    gap: 8px;
+    padding: 12px;
     margin: 0;
     background-color: #ffffff;
-    border: none;
+    border-top: 1px solid #f2d4e0;
+    border-radius: 0;
     box-shadow: none;
 }
 
 #chatbot-entrada {
     min-width: 0;
     flex: 1;
-    padding: 10px;
+    padding: 11px 13px;
     border: 1px solid #e8a5c2;
-    border-radius: 15px;
+    border-radius: 22px;
     outline: none;
+    font-size: 12px;
+    color: #5c4652;
+    background-color: #fff9fc;
+}
+
+#chatbot-entrada:focus {
+    border-color: #c9a45c;
+    box-shadow: 0 0 0 2px rgba(201, 164, 92, 0.12);
 }
 
 #chatbot-formulario button {
-    padding: 10px;
+    width: 38px;
+    height: 38px;
+    padding: 0;
     margin: 0;
-    border-radius: 15px;
+    border: none;
+    border-radius: 50%;
+    background-color: #e8a5c2;
+    color: #ffffff;
+    font-size: 19px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+#chatbot-formulario button:hover {
+    background-color: #c9a45c;
 }
 
 /* =========================================
-   9. DISEÑO PARA CELULARES
+   10. PIE DEL CHAT
+========================================= */
+
+.chatbot-pie {
+    padding: 7px;
+    background-color: #ffffff;
+    color: #a18b97;
+    text-align: center;
+    font-size: 10px;
+    border-top: 1px solid #f8e7ee;
+}
+
+/* =========================================
+   11. DISEÑO PARA CELULARES
 ========================================= */
 
 @media (max-width: 400px) {
@@ -151,6 +287,13 @@
     }
 
     #chatbot-ventana {
-        width: min(320px, calc(100vw - 20px));
+        width: calc(100vw - 20px);
+        height: min(480px, 75vh);
+        right: 0;
+    }
+
+    #chatbot-boton {
+        padding: 12px 16px;
+        font-size: 12px;
     }
 }
