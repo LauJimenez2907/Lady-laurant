@@ -1548,3 +1548,281 @@ nav a.activo {
     }
 
 }
+
+
+/* =========================================
+   40. PORTADA DE CONTACTO
+========================================= */
+
+.contacto-portada {
+    padding: 75px 20px;
+    text-align: center;
+    background: linear-gradient(135deg, #fff0f6, #fff9fc, #fce8f1);
+}
+
+.contacto-portada span {
+    color: #c9a45c;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.contacto-portada h2 {
+    max-width: 750px;
+    margin: 18px auto;
+    color: #94677e;
+    font-family: Georgia, serif;
+    font-size: 43px;
+}
+
+.contacto-portada p {
+    max-width: 650px;
+    margin: auto;
+    color: #77636e;
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   41. CONTENIDO DE CONTACTO
+========================================= */
+
+.contacto-contenido {
+    max-width: 1200px;
+    margin: auto;
+    padding: 75px 30px;
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 65px;
+    align-items: start;
+}
+
+.contacto-etiqueta {
+    color: #c9a45c;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.contacto-informacion h2 {
+    color: #94677e;
+    font-family: Georgia, serif;
+    font-size: 34px;
+    margin: 18px 0;
+}
+
+.contacto-informacion > p {
+    color: #77636e;
+    line-height: 1.9;
+    margin-bottom: 35px;
+}
+
+
+/* =========================================
+   42. DATOS DE CONTACTO
+========================================= */
+
+.contacto-dato {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    margin-bottom: 28px;
+}
+
+.contacto-icono {
+    min-width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #fce8f1;
+    color: #bd829e;
+    font-size: 21px;
+    font-weight: bold;
+}
+
+.contacto-dato h3 {
+    color: #94677e;
+    margin-bottom: 7px;
+}
+
+.contacto-dato p {
+    color: #806d77;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.contacto-dato a {
+    display: inline-block;
+    margin-top: 7px;
+    color: #bd829e;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.contacto-dato a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================
+   43. FORMULARIO
+========================================= */
+
+.contacto-formulario-contenedor {
+    padding: 35px;
+    border: 1px solid #f0dce5;
+    border-radius: 22px;
+    background: white;
+    box-shadow: 0 8px 30px rgba(190, 130, 160, 0.10);
+}
+
+.contacto-formulario-contenedor h2 {
+    color: #94677e;
+    font-family: Georgia, serif;
+    font-size: 28px;
+    margin-bottom: 12px;
+}
+
+.contacto-formulario-contenedor > p {
+    color: #806d77;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+.formulario-contacto {
+    display: flex;
+    flex-direction: column;
+    gap: 19px;
+}
+
+.campo-contacto {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.campo-contacto label {
+    color: #705b66;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.campo-contacto input,
+.campo-contacto textarea {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #ead4df;
+    border-radius: 10px;
+    outline: none;
+    background: #fffafd;
+    color: #5c4652;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.campo-contacto input:focus,
+.campo-contacto textarea:focus {
+    border-color: #e8a5c2;
+    box-shadow: 0 0 0 3px rgba(232, 165, 194, 0.15);
+}
+
+.campo-contacto textarea {
+    resize: vertical;
+}
+
+.boton-enviar-contacto {
+    padding: 15px;
+    border: none;
+    border-radius: 30px;
+    background: #e8a5c2;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.boton-enviar-contacto:hover {
+    background: #d88eae;
+    transform: translateY(-2px);
+}
+
+
+/* =========================================
+   44. MENSAJE FINAL
+========================================= */
+
+.contacto-final {
+    padding: 65px 20px;
+    text-align: center;
+    background: linear-gradient(135deg, #fff0f6, #fff9fc);
+}
+
+.contacto-final h2 {
+    color: #94677e;
+    font-family: Georgia, serif;
+    font-size: 33px;
+    margin-bottom: 15px;
+}
+
+.contacto-final p {
+    color: #77636e;
+    margin-bottom: 25px;
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   45. RESPONSIVE PARA TABLETS
+========================================= */
+
+@media (max-width: 850px) {
+
+    .contacto-contenido {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 55px 25px;
+    }
+
+}
+
+
+/* =========================================
+   46. RESPONSIVE PARA CELULARES
+========================================= */
+
+@media (max-width: 600px) {
+
+    .contacto-portada {
+        padding: 55px 20px;
+    }
+
+    .contacto-portada h2 {
+        font-size: 32px;
+    }
+
+    .contacto-contenido {
+        padding: 40px 18px;
+    }
+
+    .contacto-informacion h2 {
+        font-size: 29px;
+    }
+
+    .contacto-formulario-contenedor {
+        padding: 23px 18px;
+    }
+
+    .contacto-formulario-contenedor h2 {
+        font-size: 25px;
+    }
+
+    .contacto-final h2 {
+        font-size: 27px;
+    }
+
+}
