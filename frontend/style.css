@@ -492,3 +492,451 @@ section h2 {
     }
 
 }
+
+
+/* =========================================
+   17. ENCABEZADO PRINCIPAL
+========================================= */
+
+.encabezado-principal {
+    background: linear-gradient(135deg, #fff0f6, #f8d7e5, #fffafc);
+    padding: 35px 15px;
+    text-align: center;
+    border-bottom: 2px solid var(--dorado);
+}
+
+.encabezado-principal .marca-superior {
+    color: var(--dorado);
+    font-size: 12px;
+    letter-spacing: 5px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.encabezado-principal h1 {
+    font-family: Georgia, serif;
+    font-size: 48px;
+    letter-spacing: 2px;
+}
+
+nav a.activo {
+    background-color: var(--rosado);
+    color: var(--dorado);
+}
+
+
+/* =========================================
+   18. PORTADA PRINCIPAL
+========================================= */
+
+.portada {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 40px;
+    padding: 65px 8%;
+    background: linear-gradient(120deg, #fff9fc, #fce8f0);
+    text-align: left;
+}
+
+.portada-contenido {
+    max-width: 550px;
+}
+
+.texto-decorativo {
+    color: var(--dorado);
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+}
+
+.portada h2 {
+    color: var(--texto);
+    font-family: Georgia, serif;
+    font-size: 42px;
+    line-height: 1.25;
+    margin-bottom: 20px;
+}
+
+.portada-contenido > p:not(.texto-decorativo) {
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+.portada-botones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.portada-imagen img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 45% 45% 15px 15px;
+    border: 5px solid var(--blanco);
+    box-shadow: 0 8px 25px rgba(201, 164, 92, 0.18);
+}
+
+.boton-secundario {
+    background-color: var(--blanco);
+    color: var(--texto);
+}
+
+
+/* =========================================
+   19. SECCION DEL CARRUSEL
+========================================= */
+
+.seccion-carrusel {
+    background-color: var(--blanco);
+}
+
+.seccion-carrusel h2 {
+    font-family: Georgia, serif;
+}
+
+.seccion-carrusel .carrusel {
+    max-width: 1150px;
+    margin: 20px auto;
+    border-radius: 15px;
+}
+
+
+/* =========================================
+   20. PRESENTACION
+========================================= */
+
+.presentacion-inicio {
+    background-color: #fff0f6;
+    padding: 65px 12%;
+}
+
+.presentacion-inicio h2,
+.productos-destacados h2,
+.seccion-ocasiones h2,
+.seccion-beneficios h2,
+.invitacion-final h2 {
+    font-family: Georgia, serif;
+    font-size: 32px;
+}
+
+.presentacion-inicio p:not(.texto-decorativo) {
+    max-width: 750px;
+    margin: 0 auto 20px;
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   21. PRODUCTOS DESTACADOS
+========================================= */
+
+.productos-destacados {
+    background-color: var(--fondo);
+}
+
+.subtitulo-seccion {
+    margin-bottom: 30px;
+}
+
+.rejilla-destacados {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+    max-width: 1250px;
+    margin: 35px auto;
+}
+
+.tarjeta-destacada {
+    background-color: var(--blanco);
+    border: 1px solid var(--rosado);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(201, 164, 92, 0.12);
+    transition: transform 0.3s;
+}
+
+.tarjeta-destacada:hover {
+    transform: translateY(-7px);
+}
+
+.tarjeta-destacada img {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+}
+
+.contenido-destacado {
+    padding: 18px;
+}
+
+.contenido-destacado h3 {
+    color: var(--dorado);
+    margin-bottom: 10px;
+}
+
+.contenido-destacado p {
+    font-size: 14px;
+    min-height: 65px;
+}
+
+.enlace-destacado {
+    display: inline-block;
+    color: var(--dorado);
+    font-weight: bold;
+    text-decoration: none;
+    border-bottom: 1px solid var(--dorado);
+    padding-bottom: 3px;
+}
+
+.enlace-destacado:hover {
+    color: var(--rosado-fuerte);
+}
+
+.boton-catalogo {
+    margin-top: 10px;
+}
+
+
+/* =========================================
+   22. OCASIONES ESPECIALES
+========================================= */
+
+.seccion-ocasiones {
+    background: linear-gradient(135deg, #fff0f6, #fffafc);
+}
+
+.rejilla-ocasiones {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+    max-width: 1200px;
+    margin: 35px auto 0;
+}
+
+.tarjeta-ocasion {
+    background-color: var(--blanco);
+    padding: 25px 15px;
+    border: 1px solid var(--rosado);
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(201, 164, 92, 0.1);
+}
+
+.tarjeta-ocasion span {
+    color: var(--dorado);
+    font-family: Georgia, serif;
+    font-size: 30px;
+}
+
+.tarjeta-ocasion h3 {
+    color: var(--texto);
+    margin: 12px 0;
+}
+
+
+/* =========================================
+   23. BENEFICIOS
+========================================= */
+
+.seccion-beneficios {
+    background-color: var(--blanco);
+}
+
+.rejilla-beneficios {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 30px;
+    max-width: 1000px;
+    margin: 35px auto 0;
+}
+
+.rejilla-beneficios article {
+    padding: 25px;
+    background-color: #fff9fc;
+    border: 1px solid var(--rosado);
+    border-radius: 15px;
+}
+
+.icono-beneficio {
+    color: var(--dorado);
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.rejilla-beneficios h3 {
+    color: var(--dorado);
+    margin-bottom: 10px;
+}
+
+
+/* =========================================
+   24. INVITACION FINAL
+========================================= */
+
+.invitacion-final {
+    background: linear-gradient(135deg, #f8d7e5, #fff0f6);
+    padding: 65px 10%;
+}
+
+.invitacion-final p:not(.texto-decorativo) {
+    max-width: 700px;
+    margin: 0 auto 20px;
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   25. PIE DE PAGINA PROFESIONAL
+========================================= */
+
+.pie-principal {
+    background-color: #fff0f6;
+    border-top: 2px solid var(--dorado);
+    padding: 40px 20px 20px;
+    text-align: center;
+}
+
+.pie-principal h2 {
+    color: var(--dorado);
+    font-family: Georgia, serif;
+    font-size: 32px;
+}
+
+.frase-pie {
+    font-style: italic;
+}
+
+.enlaces-pie {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin: 25px 0;
+}
+
+.enlaces-pie a {
+    color: var(--texto);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.enlaces-pie a:hover {
+    color: var(--dorado);
+}
+
+.copyright {
+    border-top: 1px solid var(--rosado);
+    padding-top: 15px;
+    margin-top: 20px;
+    font-size: 13px;
+}
+
+
+/* =========================================
+   26. ADAPTACION PARA TABLETAS
+========================================= */
+
+@media (max-width: 950px) {
+
+    .portada {
+        gap: 20px;
+        padding: 45px 5%;
+    }
+
+    .portada h2 {
+        font-size: 32px;
+    }
+
+    .rejilla-destacados {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .rejilla-ocasiones {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+
+/* =========================================
+   27. ADAPTACION PARA CELULARES
+========================================= */
+
+@media (max-width: 600px) {
+
+    .encabezado-principal h1 {
+        font-size: 35px;
+    }
+
+    .portada {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 40px 20px;
+    }
+
+    .portada h2 {
+        font-size: 30px;
+    }
+
+    .portada-botones {
+        justify-content: center;
+    }
+
+    .portada-imagen img {
+        height: 280px;
+        border-radius: 20px;
+    }
+
+    .presentacion-inicio,
+    .invitacion-final {
+        padding: 45px 20px;
+    }
+
+    .presentacion-inicio h2,
+    .productos-destacados h2,
+    .seccion-ocasiones h2,
+    .seccion-beneficios h2,
+    .invitacion-final h2 {
+        font-size: 25px;
+    }
+
+    .rejilla-destacados {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .tarjeta-destacada img {
+        height: 145px;
+    }
+
+    .contenido-destacado {
+        padding: 12px;
+    }
+
+    .contenido-destacado h3 {
+        font-size: 15px;
+    }
+
+    .contenido-destacado p {
+        font-size: 12px;
+        min-height: 90px;
+    }
+
+    .rejilla-ocasiones {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .rejilla-beneficios {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .enlaces-pie {
+        gap: 15px;
+    }
+
+}
