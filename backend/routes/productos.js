@@ -1,111 +1,51 @@
 
-// 1. Importar Express y el modelo de productos
-const express = require("express");
-const Producto = require("../models/Producto");
+// =========================================
+// 1. IMPORTAR EXPRESS Y EL CONTROLADOR
+// =========================================
 
-// 2. Crear un enrutador
+const express = require("express");
 const router = express.Router();
 
-// 3. Obtener todos los productos
-router.get("/", async (req, res) => {
-    try {
-        console.log("Consultando productos desde MongoDB");
-        const productos = await Producto.find();
+const {
+    obtenerProductos,
+    obtenerProducto,
+    crearProducto,
+    actualizarProducto,
+    eliminarProducto
+} = require("../controllers/productosController");
 
-        res.json(productos);
-    } catch (error) {
-        res.status(500).json({
-            mensaje: "Error al consultar los productos"
-        });
-    }
-});
+// =========================================
+// 2. CONSULTAR TODOS LOS PRODUCTOS
+// =========================================
 
-// 4. Obtener un producto por su ID
-router.get("/:id", async (req, res) => {
-    try {
-        const producto = await Producto.findById(req.params.id);
+router.get("/", obtenerProductos);
 
-        if (!producto) {
-            return res.status(404).json({
-                mensaje: "Producto no encontrado"
-            });
-        }
+// =========================================
+// 3. CONSULTAR UN PRODUCTO POR ID
+// =========================================
 
-        res.json(producto);
-    } catch (error) {
-        res.status(500).json({
-            mensaje: "Error al buscar el producto"
-        });
-    }
-});
+router.get("/:id", obtenerProducto);
 
-// 5. Agregar un producto nuevo
-router.post("/", async (req, res) => {
-    try {
-        const nuevoProducto = new Producto(req.body);
+// =========================================
+// 4. AGREGAR UN PRODUCTO
+// =========================================
 
-        await nuevoProducto.save();
+router.post("/", crearProducto);
 
-        res.status(201).json({
-            mensaje: "Producto agregado correctamente",
-            producto: nuevoProducto
-        });
-    } catch (error) {
-        res.status(400).json({
-            mensaje: "Error al agregar el producto"
-        });
-    }
-});
+// =========================================
+// 5. ACTUALIZAR UN PRODUCTO
+// =========================================
 
-// 6. Eliminar un producto por su ID
-router.delete("/:id", async (req, res) => {
-    try {
-        const producto = await Producto.findByIdAndDelete(req.params.id);
+router.put("/:id", actualizarProducto);
 
-        if (!producto) {
-            return res.status(404).json({
-                mensaje: "Producto no encontrado"
-            });
-        }
+// =========================================
+// 6. ELIMINAR UN PRODUCTO
+// =========================================
 
-        res.json({
-            mensaje: "Producto eliminado correctamente"
-        });
-    } catch (error) {
-        res.status(500).json({
-            mensaje: "Error al eliminar el producto"
-        });
-    }
-});
+router.delete("/:id", eliminarProducto);
 
-// 7. Actualizar un producto por su ID
-router.put("/:id", async (req, res) => {
-    try {
-        const producto = await Producto.findByIdAndUpdate(
-            req.params.id,
-            req.body,
-            {
-                new: true,
-                runValidators: true
-            }
-        );
+// =========================================
+// 7. EXPORTAR LAS RUTAS
+// =========================================
 
-        if (!producto) {
-            return res.status(404).json({
-                mensaje: "Producto no encontrado"
-            });
-        }
-
-        res.json({
-            mensaje: "Producto actualizado correctamente",
-            producto: producto
-        });
-    } catch (error) {
-        res.status(400).json({
-            mensaje: "Error al actualizar el producto"
-        });
-    }
-});
-
-// 8. Exportar las rutas
 module.exports = router;

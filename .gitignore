@@ -1,4 +1,23 @@
 
+# Variables privadas
 .env
+.env.*
+
+# Dependencias de Node.js
 node_modules/
-dist/
+
+# Archivos de registro
+npm-debug.log*
+yarn-debug.log*
+
+# Archivos temporales
+*.tmp
+*.log
+
+# Configuración del editor
+.vscode/
+.idea/
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db

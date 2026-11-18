@@ -1,0 +1,209 @@
+
+/* =========================================
+   1. COLORES PRINCIPALES
+========================================= */
+
+:root {
+    --rosado: #f8d7e5;
+    --rosado-fuerte: #e8a5c2;
+    --blanco: #ffffff;
+    --dorado: #c9a45c;
+    --texto: #5c4652;
+    --fondo: #fff9fc;
+}
+
+/* =========================================
+   2. CONFIGURACION GENERAL
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--fondo);
+    color: var(--texto);
+    line-height: 1.6;
+}
+
+/* =========================================
+   3. ENCABEZADO
+========================================= */
+
+header {
+    background-color: var(--rosado);
+    text-align: center;
+    padding: 30px;
+    border-bottom: 3px solid var(--dorado);
+}
+
+header h1 {
+    color: var(--dorado);
+    font-size: 35px;
+}
+
+/* =========================================
+   4. NAVEGACION
+========================================= */
+
+nav {
+    background-color: var(--blanco);
+    padding: 15px;
+    text-align: center;
+}
+
+nav a {
+    color: var(--texto);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: var(--dorado);
+}
+
+/* =========================================
+   5. CONTENIDO PRINCIPAL
+========================================= */
+
+main {
+    width: 90%;
+    max-width: 1000px;
+    margin: 30px auto;
+}
+
+section {
+    background-color: var(--blanco);
+    padding: 25px;
+    margin-bottom: 25px;
+    border: 1px solid var(--rosado);
+    border-radius: 15px;
+    box-shadow: 0 3px 10px rgba(201, 164, 92, 0.12);
+}
+
+h2 {
+    color: var(--dorado);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* =========================================
+   6. FORMULARIO
+========================================= */
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 600px;
+    margin: auto;
+}
+
+label {
+    font-weight: bold;
+}
+
+input,
+textarea {
+    padding: 12px;
+    border: 1px solid var(--rosado-fuerte);
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+    width: 100%;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 90px;
+}
+
+/* =========================================
+   7. BOTONES
+========================================= */
+
+button {
+    background-color: var(--rosado-fuerte);
+    color: var(--blanco);
+    border: 1px solid var(--dorado);
+    padding: 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+button:hover {
+    background-color: var(--dorado);
+}
+
+/* =========================================
+   8. LISTA DE PRODUCTOS
+========================================= */
+
+#lista-administracion {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.producto-admin {
+    background-color: var(--fondo);
+    border: 1px solid var(--rosado);
+    border-radius: 12px;
+    padding: 18px;
+}
+
+.producto-admin h3 {
+    color: var(--dorado);
+}
+
+.producto-admin p {
+    margin: 5px 0;
+}
+
+/* =========================================
+   9. MENSAJES
+========================================= */
+
+#mensaje {
+    text-align: center;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+/* =========================================
+   10. PIE DE PAGINA
+========================================= */
+
+footer {
+    background-color: var(--rosado);
+    border-top: 2px solid var(--dorado);
+    text-align: center;
+    padding: 20px;
+}
+
+/* =========================================
+   11. DISEÑO PARA CELULARES
+========================================= */
+
+@media (max-width: 600px) {
+
+    main {
+        width: 95%;
+    }
+
+    section {
+        padding: 18px;
+    }
+
+    header h1 {
+        font-size: 28px;
+    }
+
+    button {
+        width: 100%;
+    }
+}

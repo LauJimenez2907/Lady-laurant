@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contacto | Lady Laurant</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="chatbot/chatbot.css">
+</head>
+
+<body>
+
+    <!-- ENCABEZADO -->
+    <header>
+        <h1>Lady Laurant</h1>
+        <p>Detalles hechos con amor</p>
+    </header>
+
+    <!-- MENU -->
+    <nav>
+        <a href="intex.html">Inicio</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="catalogo.html">Catálogo</a>
+        <a href="carrito.html">Mi carrito</a>
+        <a href="contacto.html">Contacto</a>
+    </nav>
+
+    <!-- CONTACTO -->
+    <section id="contacto">
+
+        <h2>Contáctanos</h2>
+
+        <p>
+            ¿Tienes una idea para un regalo especial?
+            Cuéntanos cómo lo imaginas.
+        </p>
+
+        <form onsubmit="enviarPedido(event)">
+
+            <label for="nombre">Nombre:</label>
+
+            <input
+                type="text"
+                id="nombre"
+                name="nombre"
+                required
+            >
+
+            <label for="producto">Producto:</label>
+
+            <input
+                type="text"
+                id="producto"
+                name="producto"
+                required
+            >
+
+            <label for="telefono">Teléfono:</label>
+
+            <input
+                type="tel"
+                id="telefono"
+                name="telefono"
+                required
+            >
+
+            <label for="mensaje">
+                Cuéntanos cómo deseas tu regalo:
+            </label>
+
+            <textarea
+                id="mensaje"
+                name="mensaje"
+                rows="4"
+                placeholder="Describe los colores, detalles o personalización..."
+            ></textarea>
+
+            <button type="submit">
+                Enviar pedido por WhatsApp
+            </button>
+
+        </form>
+
+    </section>
+
+    <!-- PIE DE PAGINA -->
+    <footer>
+        <p>Lady Laurant - Detalles hechos con amor</p>
+        <p>Gracias por apoyar nuestros productos hechos a mano.</p>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script src="script.js"></script>
+    <script src="chatbot/chatbot.js"></script>
+
+</body>
+</html>

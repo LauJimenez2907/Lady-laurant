@@ -2,406 +2,116 @@
 /* =========================================
    1. COLORES PRINCIPALES DE LADY LAURANT
 ========================================= */
-/* COLORES PRINCIPALES DE LADY LAURANT */
+
 :root {
-    --rosado: #FCE4EC;
-    --rosado-fuerte: #F4BFD0;
-    --rosado-oscuro: #E8A7BE;
-    --blanco: #FFFFFF;
-    --dorado: #E8D5A3;
-    --plateado: #E1E3E6;
-    --texto: #8A7D83;
-    --fondo: #FFFBFD;
+    --rosado: #f8d7e5;
+    --rosado-fuerte: #e8a5c2;
+    --blanco: #ffffff;
+    --dorado: #c9a45c;
+    --plateado: #d9d9d9;
+    --texto: #5c4652;
+    --fondo: #fff9fc;
 }
 
 /* =========================================
-   2. ESTILOS GENERALES
+   2. CONFIGURACION GENERAL
 ========================================= */
+
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    background-color: var(--blanco);
-    color: var(--texto);
     font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+    background-color: var(--fondo);
+    color: var(--texto);
+    line-height: 1.6;
 }
 
 /* =========================================
-   3. BARRA DE ANUNCIOS
+   3. ENCABEZADO
 ========================================= */
-.barra-anuncios {
-    background-color: var(--rosado-oscuro);
-    color: var(--blanco);
-    text-align: center;
-    padding: 10px;
-    font-size: 13px;
-    letter-spacing: 1px;
-}
 
-/* =========================================
-   4. ENCABEZADO PRINCIPAL
-========================================= */
 header {
-    background-color: var(--blanco);
+    background-color: var(--rosado);
     text-align: center;
-    padding: 25px 20px;
+    padding: 30px 15px;
+    border-bottom: 3px solid var(--dorado);
 }
 
 header h1 {
     color: var(--dorado);
-    font-size: 38px;
-    margin: 0;
-}
-
-header p {
-    color: var(--texto);
-    font-size: 13px;
-    letter-spacing: 3px;
-    margin-top: 8px;
-}
-
-/* =========================================
-   5. MENU DE NAVEGACION
-========================================= */
-nav {
-    background-color: var(--blanco);
-    text-align: center;
-    padding: 18px;
-    border-top: 1px solid var(--rosado);
-    border-bottom: 1px solid var(--rosado);
-}
-
-nav a {
-    color: var(--texto);
-    text-decoration: none;
-    font-size: 14px;
-    margin: 0 15px;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-nav a:hover {
-    color: var(--rosado-oscuro);
-}
-
-/* =========================================
-   6. SECCIONES GENERALES
-========================================= */
-section {
-    padding: 55px 20px;
-    text-align: center;
-}
-
-section h2 {
-    color: var(--rosado-oscuro);
-    font-size: 30px;
-    margin-bottom: 15px;
-}
-
-section p {
-    line-height: 1.7;
-}
-
-/* =========================================
-   7. PRESENTACION PRINCIPAL
-========================================= */
-.hero {
-    background-color: var(--fondo);
-    padding: 90px 20px;
-}
-
-.hero h2 {
-    color: var(--rosado-oscuro);
     font-size: 42px;
 }
 
-.hero p {
-    max-width: 600px;
-    margin: 15px auto 25px;
+header p {
+    font-size: 18px;
 }
 
 /* =========================================
-   8. BOTONES GENERALES
-========================================= */
-.boton {
-    display: inline-block;
-    background-color: var(--rosado-fuerte);
-    color: var(--blanco);
-    text-decoration: none;
-    padding: 13px 25px;
-    border-radius: 25px;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-.boton:hover {
-    background-color: var(--dorado);
-    transform: translateY(-2px);
-}
-
-
-/* =========================================
-   9. CATALOGO DE PRODUCTOS
+   4. MENU DE NAVEGACION
 ========================================= */
 
-.contenedor-productos {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-    margin-top: 35px;
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* Diseño de cada tarjeta */
-.tarjeta-producto {
+nav {
     background-color: var(--blanco);
-    border: 1px solid var(--rosado);
-    border-radius: 20px;
-    padding: 18px;
-    width: 250px;
-    box-shadow: 0 4px 15px rgba(232, 167, 190, 0.15);
-    transition: 0.3s;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-/* Efecto al pasar el cursor */
-.tarjeta-producto:hover {
-    transform: translateY(-7px);
-    box-shadow: 0 8px 20px rgba(232, 167, 190, 0.25);
-}
-
-/* Marco para las fotografias de los productos */
-.tarjeta-producto img {
-    width: 100%;
-    height: 200px;
-    object-fit: contain;
-    padding: 8px;
-    border: 2px solid var(--rosado);
-    border-radius: 15px;
-    background-color: var(--blanco);
-}
-
-
-/* Nombre del producto */
-.tarjeta-producto h3 {
-    color: var(--rosado-oscuro);
-    font-size: 19px;
-    margin: 15px 0 10px;
-}
-
-/* Descripcion del producto */
-.tarjeta-producto p {
-    color: var(--texto);
-    font-size: 14px;
-    line-height: 1.6;
-}
-
-/* Boton para solicitar productos */
-.tarjeta-producto button {
-    background-color: var(--rosado-fuerte);
-    color: var(--blanco);
-    border: 1px solid var(--dorado);
-    padding: 11px 18px;
-    border-radius: 25px;
-    font-size: 14px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-    margin-top: 10px;
-}
-
-.tarjeta-producto button:hover {
-    background-color: var(--dorado);
-    transform: translateY(-2px);
-}
-
-
-/* Estilo para los precios */
-.tarjeta-producto p strong {
-    display: inline-block;
-    color: var(--dorado);
-    background-color: var(--fondo);
-    border: 1px solid var(--dorado);
-    border-radius: 20px;
-    padding: 8px 14px;
-    font-size: 16px;
-}
-
-
-
-/* =========================================
-   BOTONES DE CATEGORIAS
-========================================= */
-
-.categorias {
+    padding: 15px;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 12px;
-    margin: 25px 0;
+    gap: 25px;
+    box-shadow: 0 2px 8px rgba(201, 164, 92, 0.15);
 }
 
-.categorias button {
-    background-color: var(--rosado);
-    color: var(--texto);
-    border: 1px solid var(--dorado);
-    padding: 10px 18px;
-    border-radius: 20px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.categorias button:hover {
-    background-color: var(--rosado-fuerte);
-    color: var(--blanco);
-    transform: translateY(-2px);
-}
-
-
-/* Categoria seleccionada */
-.categorias button.categoria-activa {
-    background-color: var(--rosado-oscuro);
-    color: var(--blanco);
-    border: 2px solid var(--dorado);
-    box-shadow: 0 3px 8px rgba(232, 167, 190, 0.3);
-    font-weight: bold;
-}
-
-/* =========================================
-   10. FORMULARIO DE CONTACTO
-========================================= */
-
-form {
-    max-width: 520px;
-    margin: 30px auto;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    background-color: var(--fondo);
-    padding: 30px;
-    border: 1px solid var(--rosado);
-    border-radius: 20px;
-    box-shadow: 0 5px 18px rgba(232, 167, 190, 0.18);
-}
-
-/* Textos de los campos */
-form label {
-    font-weight: bold;
-    color: var(--texto);
-    text-align: left;
-    font-size: 14px;
-}
-
-/* Campos para escribir */
-form input,
-form textarea {
-    width: 100%;
-    padding: 13px;
-    border: 1px solid var(--rosado-fuerte);
-    border-radius: 12px;
-    background-color: var(--blanco);
-    color: var(--texto);
-    font-size: 15px;
-    outline: none;
-    transition: 0.3s;
-}
-
-/* Efecto al seleccionar un campo */
-form input:focus,
-form textarea:focus {
-    border-color: var(--dorado);
-    box-shadow: 0 0 7px rgba(232, 213, 163, 0.5);
-}
-
-/* Boton de enviar */
-form button {
-    background-color: var(--rosado-fuerte);
-    color: var(--blanco);
-    border: 1px solid var(--dorado);
-    padding: 14px;
-    border-radius: 25px;
-    font-size: 15px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-    margin-top: 8px;
-}
-
-/* Efecto del boton */
-form button:hover {
-    background-color: var(--dorado);
-    transform: translateY(-2px);
-}
-
-/* =========================================
-   11. PIE DE PAGINA
-========================================= */
-footer {
-    background-color: var(--rosado);
-    color: var(--texto);
-    padding: 25px;
-    text-align: center;
-    border-top: 2px solid var(--dorado);
-    margin-top: 30px;
-}
-
-footer a {
-    color: var(--texto);
+nav a {
     text-decoration: none;
+    color: var(--texto);
     font-weight: bold;
 }
 
-footer a:hover {
+nav a:hover {
     color: var(--dorado);
 }
 
 /* =========================================
-   12. CARRUSEL DE FOTOGRAFIAS
+   5. CARRUSEL DE FOTOGRAFIAS
 ========================================= */
+
 .carrusel {
     width: 100%;
     overflow: hidden;
     padding: 20px 0;
-    background-color: #fff9fb;
+    background-color: var(--blanco);
 }
 
-.contenedor-carrusel {
-    background-color: #fff9fb;
-}
-.contenedor-carrusel {
+.carrusel-contenedor {
     display: flex;
     width: 300%;
-    animation: pasarFotos 12s infinite;
+    animation: pasarFotos 15s infinite;
 }
 
-.contenedor-carrusel img {
+.carrusel-contenedor img {
     width: 33.333%;
-    height: 250px;
+    height: 350px;
     object-fit: contain;
-    padding: 5px;
-    background-color: #fff9fb;
+    flex-shrink: 0;
 }
 
-/* Movimiento horizontal automatico */
 @keyframes pasarFotos {
-    0%, 30% {
+    0%, 28% {
         transform: translateX(0);
     }
 
-    33%, 63% {
+    33%, 61% {
         transform: translateX(-33.333%);
     }
 
-    66%, 96% {
+    66%, 94% {
         transform: translateX(-66.666%);
     }
 
@@ -411,96 +121,374 @@ footer a:hover {
 }
 
 /* =========================================
-   13. SECCION QUIENES SOMOS
+   6. SECCIONES GENERALES
 ========================================= */
 
-.nosotros {
-    background-color: var(--rosado);
+section {
+    padding: 45px 7%;
+    text-align: center;
 }
 
-.nosotros p {
-    max-width: 700px;
-    margin: 15px auto;
-}
-
-.nosotros h3 {
+section h2 {
     color: var(--dorado);
-    margin-top: 30px;
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+section p {
+    margin-bottom: 15px;
 }
 
 /* =========================================
-   14. DISEÑO PARA CELULARES
+   7. INICIO
 ========================================= */
+
+.inicio {
+    background-color: var(--rosado);
+    padding: 70px 20px;
+}
+
+.inicio h2 {
+    font-size: 32px;
+}
+
+/* =========================================
+   8. BOTONES
+========================================= */
+
+button,
+.boton {
+    background-color: var(--rosado-fuerte);
+    color: var(--blanco);
+    border: 1px solid var(--dorado);
+    padding: 11px 18px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    margin: 5px;
+}
+
+button:hover,
+.boton:hover {
+    background-color: var(--dorado);
+    color: var(--blanco);
+}
+
+/* =========================================
+   9. BUSCADOR
+========================================= */
+
+#buscar-producto {
+    width: 80%;
+    max-width: 450px;
+    padding: 12px;
+    border: 1px solid var(--rosado-fuerte);
+    border-radius: 20px;
+    margin: 15px auto;
+    outline: none;
+}
+
+/* =========================================
+   10. CATEGORIAS
+========================================= */
+
+.categorias {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 20px 0;
+}
+
+.categorias button {
+    background-color: var(--blanco);
+    color: var(--texto);
+}
+
+.categorias button:hover,
+.categorias button.categoria-activa {
+    background-color: var(--dorado);
+    color: var(--blanco);
+}
+
+
+/* =========================================
+   11. CATALOGO Y TARJETAS
+========================================= */
+
+/* Organizar los productos en columnas */
+
+.contenedor-productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 28px;
+    margin: 35px auto;
+    max-width: 1200px;
+    align-items: stretch;
+}
+
+/* Diseño de cada tarjeta */
+
+.tarjeta-producto {
+    background-color: var(--blanco);
+    width: 100%;
+    min-height: 480px;
+    padding: 18px;
+    border: 1px solid var(--rosado);
+    border-radius: 18px;
+    box-shadow: 0 5px 15px rgba(201, 164, 92, 0.13);
+    transition: transform 0.3s, box-shadow 0.3s;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Efecto al pasar el cursor */
+
+.tarjeta-producto:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 9px 22px rgba(201, 164, 92, 0.22);
+}
+
+/* Fotografías */
+
+.tarjeta-producto img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 13px;
+    border: 1px solid var(--rosado);
+}
+
+/* Nombre del producto */
+
+.tarjeta-producto h3 {
+    color: var(--dorado);
+    margin: 15px 0 8px;
+    font-size: 19px;
+    text-align: center;
+}
+
+/* Descripción y precio */
+
+.tarjeta-producto p {
+    margin: 8px 0;
+    text-align: center;
+}
+
+/* Botones de las tarjetas */
+
+.tarjeta-producto button {
+    width: 100%;
+    max-width: 220px;
+    margin-top: auto;
+    flex-shrink: 0;
+}
+
+/* Separación entre los dos botones */
+
+.tarjeta-producto button + button {
+    margin-top: 8px;
+}
+
+/* =========================================
+   ADAPTACION PARA CELULARES
+========================================= */
+
 @media (max-width: 600px) {
 
-    header h1 {
-        font-size: 30px;
+    .contenedor-productos {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
     }
 
-    nav a {
-        display: inline-block;
-        margin: 7px;
+    .tarjeta-producto {
+        min-height: 440px;
+        padding: 10px;
+    }
+
+    .tarjeta-producto img {
+        height: 150px;
+    }
+
+    .tarjeta-producto h3 {
+        font-size: 15px;
+    }
+
+    .tarjeta-producto p {
         font-size: 13px;
     }
 
-    .hero {
-        padding: 55px 15px;
+    .tarjeta-producto button {
+        font-size: 12px;
+        padding: 9px 5px;
     }
 
-    .hero h2 {
-        font-size: 30px;
+}
+
+
+
+/* =========================================
+   12. CARRITO DE COMPRAS
+========================================= */
+
+#carrito {
+    background-color: var(--rosado);
+}
+
+#lista-carrito {
+    max-width: 650px;
+    margin: 20px auto;
+}
+
+.producto-carrito {
+    background-color: var(--blanco);
+    border: 1px solid var(--dorado);
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 12px;
+}
+
+.producto-carrito h3 {
+    color: var(--dorado);
+}
+
+#total-carrito {
+    color: var(--texto);
+    font-size: 24px;
+    margin: 20px;
+}
+
+/* =========================================
+   13. FORMULARIO DE CONTACTO
+========================================= */
+
+form {
+    max-width: 500px;
+    margin: 25px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background-color: var(--blanco);
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid var(--rosado);
+    box-shadow: 0 3px 10px rgba(201, 164, 92, 0.12);
+}
+
+form label {
+    text-align: left;
+    font-weight: bold;
+}
+
+form input,
+form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--rosado-fuerte);
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+}
+
+form textarea {
+    resize: vertical;
+}
+
+/* =========================================
+   14. PIE DE PAGINA
+========================================= */
+
+footer {
+    background-color: var(--rosado);
+    border-top: 2px solid var(--dorado);
+    text-align: center;
+    padding: 25px;
+}
+
+/* =========================================
+   15. DISEÑO PARA CELULARES
+========================================= */
+
+@media (max-width: 600px) {
+
+    header h1 {
+        font-size: 32px;
+    }
+
+    nav {
+        gap: 12px;
+    }
+
+    nav a {
+        font-size: 14px;
+    }
+
+    .carrusel-contenedor img {
+        height: 220px;
+    }
+
+    section {
+        padding: 30px 15px;
     }
 
     .tarjeta-producto {
         width: 100%;
-        max-width: 320px;
+        max-width: 330px;
     }
 
-    .contenedor-carrusel img {
-        height: 160px;
+    #buscar-producto {
+        width: 100%;
     }
 
-    footer {
-        padding: 18px 10px;
-        font-size: 14px;
+    form {
+        padding: 18px;
     }
 }
+
 
 /* =========================================
-   BUSCADOR DE PRODUCTOS
+   16. PAGINAS INDEPENDIENTES
 ========================================= */
 
-.buscador {
-    max-width: 450px;
-    margin: 25px auto;
+/* Espaciado del contenido */
+section {
+    min-height: 180px;
 }
 
-.buscador input {
-    width: 100%;
-    padding: 14px 18px;
-    border: 1px solid var(--dorado);
-    border-radius: 25px;
-    background-color: var(--blanco);
-    color: var(--texto);
-    font-size: 15px;
-    outline: none;
-}
-
-.buscador input:focus {
-    border-color: var(--rosado-fuerte);
-    box-shadow: 0 0 6px var(--rosado-fuerte);
-}
-
-
-/* ESTILO DEL CONTADOR DE PRODUCTOS */
-#contador-productos {
-    display: inline-block;
-    background-color: var(--rosado);
-    color: var(--texto);
-    border: 1px solid var(--dorado);
+/* Enlaces del menú */
+nav a {
+    padding: 8px 12px;
     border-radius: 20px;
-    padding: 10px 20px;
-    font-size: 14px;
-    font-weight: bold;
-    margin: 15px auto;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    background-color: var(--rosado);
+    color: var(--dorado);
+}
+
+/* Botones de navegación */
+.boton {
+    margin-top: 15px;
+}
+
+/* Títulos de las páginas */
+section h2 {
+    letter-spacing: 0.5px;
+}
+
+/* Adaptación para celulares */
+@media (max-width: 600px) {
+
+    nav {
+        gap: 8px;
+    }
+
+    nav a {
+        padding: 7px 9px;
+    }
+
 }

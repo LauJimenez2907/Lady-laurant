@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Catálogo | Lady Laurant</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="chatbot/chatbot.css">
+</head>
+
+<body>
+
+    <!-- ENCABEZADO -->
+    <header>
+        <h1>Lady Laurant</h1>
+        <p>Detalles hechos con amor</p>
+    </header>
+
+    <!-- MENU DE NAVEGACION -->
+    <nav>
+        <a href="intex.html">Inicio</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="catalogo.html">Catálogo</a>
+        <a href="carrito.html">Mi carrito</a>
+        <a href="contacto.html">Contacto</a>
+    </nav>
+
+    <!-- TITULO DEL CATALOGO -->
+    <section>
+        <h2>Nuestro catálogo</h2>
+
+        <p>
+            Encuentra el detalle perfecto para cada ocasión.
+        </p>
+
+        <!-- BUSCADOR -->
+        <input
+            type="text"
+            id="buscar-producto"
+            placeholder="Buscar un producto..."
+            oninput="buscarProductos()"
+        >
+
+        <!-- CATEGORIAS -->
+        <div class="categorias">
+
+            <button onclick="filtrarCategoria('Todos')">Todos</button>
+
+            <button onclick="filtrarCategoria('Flores')">Flores</button>
+
+            <button onclick="filtrarCategoria('Anchetas')">Anchetas</button>
+
+            <button onclick="filtrarCategoria('Cajas sorpresa')">
+                Cajas sorpresa
+            </button>
+
+            <button onclick="filtrarCategoria('Personalizados')">
+                Personalizados
+            </button>
+
+            <button onclick="filtrarCategoria('Regalos')">Regalos</button>
+
+            <button onclick="filtrarCategoria('Belleza')">Belleza</button>
+
+        </div>
+
+        <!-- CONTADOR -->
+        <p id="contador-productos">Cargando productos...</p>
+
+        <!-- PRODUCTOS -->
+        <div id="lista-productos" class="contenedor-productos">
+        </div>
+
+        <br>
+
+        <a href="carrito.html" class="boton">
+            Ir a mi carrito
+        </a>
+
+    </section>
+
+    <!-- PIE DE PAGINA -->
+    <footer>
+        <p>Lady Laurant - Detalles hechos con amor</p>
+        <p>Gracias por apoyar nuestros productos hechos a mano.</p>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script src="script.js"></script>
+    <script src="chatbot/chatbot.js"></script>
+
+</body>
+</html>

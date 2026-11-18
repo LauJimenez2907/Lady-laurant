@@ -1,43 +1,53 @@
-// 1. Importar Mongoose
+
+// =========================================
+// 1. IMPORTAR MONGOOSE
+// =========================================
+
 const mongoose = require("mongoose");
 
-// 2. Definir la estructura de los productos
+// =========================================
+// 2. DEFINIR LOS DATOS DEL PRODUCTO
+// =========================================
+
 const productoSchema = new mongoose.Schema({
 
-    // Nombre del producto
     nombre: {
         type: String,
         required: true
     },
 
-    // Descripción del producto
     descripcion: {
         type: String,
         required: true
     },
 
-    // Precio del producto
     precio: {
         type: Number,
         required: true
     },
 
-    // Categoría del producto
     categoria: {
         type: String,
         required: true
     },
 
-    // Imagen del producto
     imagen: {
         type: String,
         default: ""
     }
 
-}, { timestamps: true });
+}, {
+    timestamps: true
+});
 
-// 3. Crear el modelo
+// =========================================
+// 3. CREAR EL MODELO
+// =========================================
+
 const Producto = mongoose.model("Producto", productoSchema);
 
-// 4. Exportar el modelo
+// =========================================
+// 4. EXPORTAR EL MODELO
+// =========================================
+
 module.exports = Producto;

@@ -1,0 +1,156 @@
+
+/* =========================================
+   1. CONTENEDOR DEL CHATBOT
+========================================= */
+
+#chatbot {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    font-family: Arial, sans-serif;
+}
+
+/* =========================================
+   2. BOTON PARA ABRIR EL CHAT
+========================================= */
+
+#chatbot-boton {
+    background-color: #e8a5c2;
+    color: #ffffff;
+    border: 2px solid #c9a45c;
+    padding: 14px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 3px 10px rgba(201, 164, 92, 0.25);
+}
+
+/* =========================================
+   3. VENTANA DEL CHAT
+========================================= */
+
+#chatbot-ventana {
+    position: absolute;
+    bottom: 65px;
+    right: 0;
+    width: 320px;
+    height: 420px;
+    background-color: #ffffff;
+    border: 2px solid #e8a5c2;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(201, 164, 92, 0.2);
+}
+
+/* =========================================
+   4. ENCABEZADO
+========================================= */
+
+#chatbot-encabezado {
+    background-color: #f8d7e5;
+    color: #5c4652;
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#chatbot-encabezado h3 {
+    font-size: 16px;
+}
+
+#chatbot-cerrar {
+    background-color: #ffffff;
+    color: #5c4652;
+    border: 1px solid #c9a45c;
+    padding: 5px 10px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* =========================================
+   5. AREA DE MENSAJES
+========================================= */
+
+#chatbot-mensajes {
+    height: 290px;
+    padding: 12px;
+    overflow-y: auto;
+    background-color: #fff9fc;
+}
+
+/* =========================================
+   6. MENSAJES DEL BOT
+========================================= */
+
+.mensaje-bot {
+    background-color: #f8d7e5;
+    color: #5c4652;
+    padding: 10px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    max-width: 85%;
+    text-align: left;
+}
+
+/* =========================================
+   7. MENSAJES DEL USUARIO
+========================================= */
+
+.mensaje-usuario {
+    background-color: #ffffff;
+    color: #5c4652;
+    border: 1px solid #c9a45c;
+    padding: 10px;
+    border-radius: 12px;
+    margin: 10px 0 10px auto;
+    max-width: 85%;
+    text-align: right;
+}
+
+/* =========================================
+   8. FORMULARIO DEL CHAT
+========================================= */
+
+#chatbot-formulario {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    padding: 8px;
+    margin: 0;
+    background-color: #ffffff;
+    border: none;
+    box-shadow: none;
+}
+
+#chatbot-entrada {
+    min-width: 0;
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #e8a5c2;
+    border-radius: 15px;
+    outline: none;
+}
+
+#chatbot-formulario button {
+    padding: 10px;
+    margin: 0;
+    border-radius: 15px;
+}
+
+/* =========================================
+   9. DISEÑO PARA CELULARES
+========================================= */
+
+@media (max-width: 400px) {
+
+    #chatbot {
+        right: 10px;
+        bottom: 10px;
+    }
+
+    #chatbot-ventana {
+        width: min(320px, calc(100vw - 20px));
+    }
+}

@@ -6,217 +6,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Lady Laurant</title>
+    <title>Inicio | Lady Laurant</title>
 
-    <!-- CONECTAR CSS -->
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="chatbot/chatbot.css">
 </head>
 
 <body>
 
-    <!-- ENCABEZADO DE LA MARCA -->
+    <!-- ENCABEZADO -->
     <header>
         <h1>Lady Laurant</h1>
         <p>Detalles hechos con amor</p>
     </header>
 
-    <!-- CARRUSEL DE FOTOGRAFIAS -->
-    <section class="carrusel">
-
-        <div class="contenedor-carrusel">
-
-            <img src="imagenes/carrusel/foto1.jpg.jpg" alt="Detalles Lady Laurant">
-
-            <img src="imagenes/carrusel/foto2.jpg.jpg" alt="Regalos personalizados">
-
-            <img src="imagenes/carrusel/foto3.jpg.jpg" alt="Creaciones hechas a mano">
-
-        </div>
-
-    </section>
-
     <!-- MENU DE NAVEGACION -->
     <nav>
-        <a href="#inicio">Inicio</a>
-        <a href="#nosotros">Nosotros</a>
-        <a href="#catalogo">Catálogo</a>
-        <a href="#carrito">Mi carrito</a>
-        <a href="#contacto">Contacto</a>
+        <a href="intex.html">Inicio</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="catalogo.html">Catálogo</a>
+        <a href="carrito.html">Mi carrito</a>
+        <a href="contacto.html">Contacto</a>
     </nav>
 
-    <!-- PRESENTACION PRINCIPAL -->
-    <section id="inicio" class="hero">
+    <!-- CARRUSEL -->
+    <section class="carrusel">
+        <div class="carrusel-contenedor">
+            <img src="imagenes/carrusel/foto1.jpg.jpg" alt="Detalles Lady Laurant">
+            <img src="imagenes/carrusel/foto2.jpg.jpg" alt="Regalos personalizados">
+            <img src="imagenes/carrusel/foto3.jpg.jpg" alt="Creaciones hechas a mano">
+        </div>
+    </section>
 
-        <h2>Regalos que cuentan historias</h2>
+    <!-- BIENVENIDA -->
+    <section class="inicio">
+        <h2>Bienvenidos a Lady Laurant</h2>
 
         <p>
-            En Lady Laurant creamos detalles personalizados
-            y regalos hechos a mano para convertir momentos
-            especiales en recuerdos inolvidables.
+            Encuentra detalles especiales para personas especiales.
+            Creamos regalos personalizados con creatividad y mucho amor.
         </p>
 
-        <p>
-            Nos apasiona transformar tus ideas y sentimientos
-            en creaciones únicas, elaboradas con dedicación,
-            creatividad y mucho amor.
-        </p>
-
-        <a href="#catalogo" class="boton">
-            Descubre nuestros productos
+        <a href="catalogo.html" class="boton">
+            Explorar catálogo
         </a>
-
     </section>
 
-    <!-- SECCION QUIENES SOMOS -->
-    <section id="nosotros" class="nosotros">
-
-        <h2>¿Quiénes somos?</h2>
-
-        <p>
-            Lady Laurant es un emprendimiento dedicado
-            a la creación de detalles personalizados y
-            regalos hechos a mano.
-        </p>
+    <!-- PRESENTACION -->
+    <section>
+        <h2>Regala momentos especiales</h2>
 
         <p>
-            Cada creación está elaborada con dedicación,
-            creatividad y amor, pensando en sorprender
-            y hacer felices a las personas especiales
-            en tu vida.
+            Descubre nuestras creaciones y encuentra el detalle perfecto
+            para sorprender a las personas que más quieres.
         </p>
 
-        <h3>Nuestra esencia</h3>
-
-        <p>
-            No vendemos simplemente regalos:
-            creamos experiencias y recuerdos especiales.
-        </p>
-
+        <a href="nosotros.html" class="boton">
+            Conócenos
+        </a>
     </section>
-
-    <!-- CATALOGO DE PRODUCTOS -->
-    <section id="catalogo">
-
-        <h2>Descubre nuestra colección</h2>
-
-        <p>
-            Encuentra regalos únicos y personalizados,
-            creados especialmente para sorprender y compartir momentos inolvidables.
-        </p>
-
-        <!-- BUSCADOR DE PRODUCTOS -->
-        <div class="buscador">
-
-            <input
-                type="text"
-                id="buscar-producto"
-                placeholder="¿Qué regalo estás buscando?"
-                oninput="buscarProductos()"
-            >
-
-        </div>
-
-        <!-- CATEGORIAS DE PRODUCTOS -->
-        <div class="categorias">
-
-            <button onclick="filtrarCategoria('Todos')">Todos</button>
-            <button onclick="filtrarCategoria('Flores')">Flores</button>
-            <button onclick="filtrarCategoria('Anchetas')">Anchetas</button>
-            <button onclick="filtrarCategoria('Cajas sorpresa')">Cajas sorpresa</button>
-            <button onclick="filtrarCategoria('Personalizados')">Personalizados</button>
-            <button onclick="filtrarCategoria('Regalos')">Regalos</button>
-            <button onclick="filtrarCategoria('Belleza')">Belleza</button>
-
-        </div>
-
-        <!-- CONTADOR DE PRODUCTOS -->
-        <p id="contador-productos">
-            Mostrando nuestros productos
-        </p>
-
-        <!-- CONTENEDOR DE PRODUCTOS -->
-        <div class="contenedor-productos" id="lista-productos">
-
-            <!-- AQUI SE MOSTRARAN LOS PRODUCTOS DE MONGODB -->
-
-        </div>
-
-    </section>
-
-    <!-- CARRITO DE COMPRAS -->
-    <section id="carrito">
-
-        <h2>Mi carrito de compras</h2>
-
-        <p>Estos son los productos que deseas llevar.</p>
-
-        <!-- PRODUCTOS AGREGADOS -->
-        <div id="lista-carrito">
-
-            <p>Tu carrito está vacío.</p>
-
-        </div>
-
-        <!-- TOTAL DE LA COMPRA -->
-        <h3 id="total-carrito">Total: $0</h3>
-
-        <!-- BOTON PARA FINALIZAR -->
-        <button onclick="finalizarCompra()">
-            Finalizar compra
-        </button>
-
-    </section>
-
-    <!-- SECCION DE CONTACTO -->
-    <section id="contacto">
-
-        <h2>Contáctanos</h2>
-
-        <p>
-            ¿Tienes una idea especial?
-            Queremos ayudarte a hacerla realidad.
-        </p>
-
-    </section>
-
-    <!-- FORMULARIO DE CONTACTO -->
-    <form onsubmit="enviarPedido(event)">
-
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" required>
-
-        <label for="producto">Producto:</label>
-        <input type="text" id="producto" name="producto" required>
-
-        <label for="telefono">Teléfono:</label>
-        <input type="tel" id="telefono" name="telefono" required>
-
-        <label for="mensaje">Cuéntanos cómo deseas tu regalo:</label>
-
-        <textarea
-            id="mensaje"
-            name="mensaje"
-            rows="4"
-            placeholder="Describe los colores, detalles o personalización que deseas..."
-        ></textarea>
-
-        <button type="submit">Enviar pedido</button>
-
-    </form>
 
     <!-- PIE DE PAGINA -->
     <footer>
-
-        <p>
-            &copy; 2026 Lady Laurant.
-            Todos los derechos reservados.
-        </p>
-
+        <p>Lady Laurant - Detalles hechos con amor</p>
+        <p>Gracias por apoyar nuestros productos hechos a mano.</p>
     </footer>
 
-    <!-- CONECTAR JAVASCRIPT -->
-    <script src="script.js"></script>
+    <!-- CHATBOT -->
+    <script src="chatbot/chatbot.js"></script>
 
 </body>
-
 </html>

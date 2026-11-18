@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Administración | Lady Laurant</title>
+
+    <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+
+    <!-- ENCABEZADO -->
+    <header>
+        <h1>Lady Laurant</h1>
+        <p>Panel de administración</p>
+    </header>
+
+    <!-- MENU -->
+    <nav>
+        <a href="../intex.html">Volver a la tienda</a>
+    </nav>
+
+    <main>
+
+        <!-- FORMULARIO DE PRODUCTOS -->
+        <section>
+            <h2>Gestionar productos</h2>
+
+            <form id="form-producto">
+
+                <input type="hidden" id="producto-id">
+
+                <label for="nombre">Nombre del producto:</label>
+                <input type="text" id="nombre" required>
+
+                <label for="descripcion">Descripción:</label>
+                <textarea id="descripcion" required></textarea>
+
+                <label for="precio">Precio:</label>
+                <input type="number" id="precio" min="1" required>
+
+                <label for="categoria">Categoría:</label>
+                <input type="text" id="categoria" required>
+
+                <label for="imagen">Ruta de la imagen:</label>
+                <input type="text" id="imagen"
+                    placeholder="imagenes/Productos/ejemplo.jpg">
+
+                <button type="submit" id="boton-guardar">
+                    Guardar producto
+                </button>
+
+                <button type="button" id="boton-cancelar"
+                    onclick="limpiarFormulario()">
+                    Cancelar
+                </button>
+
+            </form>
+        </section>
+
+        <!-- LISTA DE PRODUCTOS -->
+        <section>
+            <h2>Productos registrados</h2>
+
+            <p id="mensaje"></p>
+
+            <div id="lista-administracion">
+                <p>Cargando productos...</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- PIE DE PAGINA -->
+    <footer>
+        <p>Lady Laurant - Administración</p>
+    </footer>
+
+    <script src="admin.js"></script>
+
+</body>
+</html>

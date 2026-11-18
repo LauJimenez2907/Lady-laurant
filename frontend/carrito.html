@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mi carrito | Lady Laurant</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="chatbot/chatbot.css">
+</head>
+
+<body>
+
+    <!-- ENCABEZADO -->
+    <header>
+        <h1>Lady Laurant</h1>
+        <p>Detalles hechos con amor</p>
+    </header>
+
+    <!-- MENU -->
+    <nav>
+        <a href="intex.html">Inicio</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="catalogo.html">Catálogo</a>
+        <a href="carrito.html">Mi carrito</a>
+        <a href="contacto.html">Contacto</a>
+    </nav>
+
+    <!-- CARRITO DE COMPRAS -->
+    <section id="carrito">
+
+        <h2>Mi carrito de compras</h2>
+
+        <p>Estos son los productos que deseas llevar.</p>
+
+        <div id="lista-carrito">
+            <p>Tu carrito está vacío.</p>
+        </div>
+
+        <h3 id="total-carrito">Total: $0</h3>
+
+        <a href="catalogo.html" class="boton">
+            Seguir comprando
+        </a>
+
+        <button onclick="finalizarCompra()">
+            Finalizar compra
+        </button>
+
+    </section>
+
+    <!-- PIE DE PAGINA -->
+    <footer>
+        <p>Lady Laurant - Detalles hechos con amor</p>
+        <p>Gracias por apoyar nuestros productos hechos a mano.</p>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script src="script.js"></script>
+    <script src="chatbot/chatbot.js"></script>
+
+</body>
+</html>

@@ -3,123 +3,76 @@
    1. VARIABLES PRINCIPALES
 ========================================= */
 
-// Guardar los productos que llegan de MongoDB
 let productosCargados = [];
-
-// Guardar la categoria seleccionada
 let categoriaSeleccionada = "Todos";
 
-// Guardar los productos agregados al carrito
-let carrito = [];
+// Recuperar el carrito guardado en el navegador
+let carrito = JSON.parse(localStorage.getItem("carritoLadyLaurant")) || [];
 
 
-// =========================================
-// 2. FUNCION PARA MOSTRAR UN MENSAJE
-// =========================================
+/* =========================================
+   2. GUARDAR EL CARRITO
+========================================= */
 
-function mostrarMensaje() {
+function guardarCarrito() {
 
-    alert("¡Bienvenido a Lady Laurant! Gracias por visitarnos.");
-
-}
-
-
-// =========================================
-// 3. FUNCION PARA VALIDAR EL FORMULARIO
-// =========================================
-
-function enviarPedido(evento) {
-
-    // Evita que la pagina se recargue
-    evento.preventDefault();
-
-    // Obtener los datos del formulario
-    const nombre = document.getElementById("nombre").value.trim();
-    const producto = document.getElementById("producto").value.trim();
-    const telefono = document.getElementById("telefono").value.trim();
-    const mensaje = document.getElementById("mensaje").value.trim();
-
-    // Verificar que los campos esten completos
-    if (nombre === "" || producto === "" || telefono === "") {
-
-        alert("Por favor, completa todos los campos obligatorios.");
-
-        return;
-    }
-
-   
-    // Crear el mensaje con los datos del pedido
-    const textoPedido =
-        "¡Hola! Quiero realizar un pedido en Lady Laurant.\n\n" +
-        "Nombre: " + nombre + "\n" +
-        "Producto: " + producto + "\n" + 
-        "Teléfono: " + telefono + "\n" +
-        "Detalles: " + (mensaje || "Sin detalles adicionales");
-
-    // Preparar el enlace de WhatsApp
-    const enlaceWhatsApp =
-        "https://wa.me/573027140362?text=" +
-        encodeURIComponent(textoPedido);
-
-    // Abrir WhatsApp con el pedido escrito
-    window.open(enlaceWhatsApp, "_blank");
+    localStorage.setItem(
+        "carritoLadyLaurant",
+        JSON.stringify(carrito)
+    );
 
 }
 
 
-// =========================================
-// 4. FUNCION PARA CONSULTAR LOS PRODUCTOS
-// =========================================
+/* =========================================
+   3. CONSULTAR PRODUCTOS
+========================================= */
 
 async function cargarProductos() {
 
     try {
 
-        // Consultar los productos al servidor
         const respuesta = await fetch("/api/productos");
 
-        // Verificar si la respuesta fue correcta
         if (!respuesta.ok) {
             throw new Error("No se pudieron cargar los productos.");
         }
 
-        // Convertir la respuesta a formato JSON
-        const productos = await respuesta.json();
+        productosCargados = await respuesta.json();
 
-        // Guardar los productos en la variable principal
-        productosCargados = productos;
-
-        // Mostrar los productos en el catalogo
         mostrarProductos();
 
     } catch (error) {
 
-        // Mostrar mensaje si ocurre un error
-        console.error("Error al cargar los productos:", error);
+        console.error("Error al cargar productos:", error);
+
+        const contenedor = document.getElementById("lista-productos");
+
+        if (contenedor) {
+            contenedor.innerHTML =
+                "<p>No fue posible cargar los productos.</p>";
+        }
 
     }
 
 }
 
 
-// =========================================
-// 5. FUNCION PARA MOSTRAR LOS PRODUCTOS
-// =========================================
+/* =========================================
+   4. MOSTRAR PRODUCTOS
+========================================= */
 
 function mostrarProductos() {
 
-    // Obtener el contenedor del catalogo
     const contenedor = document.getElementById("lista-productos");
-
-    // Obtener el texto del buscador
     const campoBusqueda = document.getElementById("buscar-producto");
+
+    if (!contenedor || !campoBusqueda) return;
 
     const busqueda = campoBusqueda.value.toLowerCase().trim();
 
-    // Limpiar el catalogo
     contenedor.innerHTML = "";
 
-    // Filtrar los productos por categoria y busqueda
     const productosFiltrados = productosCargados.filter(producto => {
 
         const coincideCategoria =
@@ -135,155 +88,134 @@ function mostrarProductos() {
 
     });
 
-    // Recorrer los productos filtrados
     productosFiltrados.forEach(producto => {
 
-        // Crear una tarjeta para cada producto
         const tarjeta = document.createElement("article");
 
         tarjeta.classList.add("tarjeta-producto");
 
-        // Crear el contenido de la tarjeta
+        const imagen = producto.imagen ||
+            "https://placehold.co/300x200?text=Lady+Laurant";
+
         tarjeta.innerHTML = `
-            <img src="${producto.imagen || 'https://placehold.co/300x200?text=Lady+Laurant'}"
-                 alt="${producto.nombre}">
+            <img src="${imagen}" alt="${producto.nombre}">
 
             <h3>${producto.nombre}</h3>
 
             <p>${producto.descripcion}</p>
 
             <p>
-                <strong>Precio: $${producto.precio.toLocaleString("es-CO")}</strong>
+                <strong>
+                    Precio: $${producto.precio.toLocaleString("es-CO")}
+                </strong>
             </p>
 
             <button onclick="solicitarProducto('${producto.nombre}')">
                 Solicitar producto
-            </button> 
-            
-            <button onclick="agregarAlCarrito('${producto._id}')">
-    Agregar al carrito
-</button>
- `;
+            </button>
 
-        // Agregar la tarjeta al catalogo
+            <button onclick="agregarAlCarrito('${producto._id}')">
+                Agregar al carrito
+            </button>
+        `;
+
         contenedor.appendChild(tarjeta);
 
     });
 
-    // Actualizar el contador de productos
     const contador = document.getElementById("contador-productos");
 
     if (contador) {
-        contador.textContent = `Mostrando ${productosFiltrados.length} productos`;
-    }
-
-    // Mostrar mensaje si no hay productos
-    if (productosFiltrados.length === 0) {
-        contenedor.innerHTML = "<p>No encontramos productos con esa busqueda.</p>";
+        contador.textContent =
+            `Mostrando ${productosFiltrados.length} productos`;
     }
 
 }
 
 
-// =========================================
-// 6. FUNCION PARA BUSCAR PRODUCTOS
-// =========================================
+/* =========================================
+   5. BUSCAR PRODUCTOS
+========================================= */
 
 function buscarProductos() {
-
-    // Actualizar los productos segun lo que escribe el cliente
     mostrarProductos();
-
 }
 
 
-// =========================================
-// 7. FUNCION PARA FILTRAR POR CATEGORIA
-// =========================================
+/* =========================================
+   6. FILTRAR POR CATEGORIA
+========================================= */
 
 function filtrarCategoria(categoria) {
 
-    // Guardar la categoria seleccionada
     categoriaSeleccionada = categoria;
 
-    // Obtener todos los botones de categorias
     const botones = document.querySelectorAll(".categorias button");
 
-    // Recorrer los botones
     botones.forEach(boton => {
 
-        // Quitar la seleccion anterior
         boton.classList.remove("categoria-activa");
 
-        // Resaltar la categoria seleccionada
         if (boton.textContent.trim().toLowerCase() === categoria.toLowerCase()) {
             boton.classList.add("categoria-activa");
         }
 
     });
 
-    // Mostrar los productos de esa categoria
     mostrarProductos();
 
 }
 
 
-// =========================================
-// 8. FUNCION PARA SOLICITAR UN PRODUCTO
-// =========================================
+/* =========================================
+   7. SOLICITAR UN PRODUCTO
+========================================= */
 
 function solicitarProducto(nombreProducto) {
 
-    // Escribir el producto seleccionado en el formulario
-    document.getElementById("producto").value = nombreProducto;
+    const campoProducto = document.getElementById("producto");
 
-    // Desplazarse hasta la seccion de contacto
-    document.getElementById("contacto").scrollIntoView({
-        behavior: "smooth"
-    });
+    if (campoProducto) {
+        campoProducto.value = nombreProducto;
+    }
+
+    const contacto = document.getElementById("contacto");
+
+    if (contacto) {
+        contacto.scrollIntoView({ behavior: "smooth" });
+    } else {
+        window.location.href =
+            "contacto.html?producto=" + encodeURIComponent(nombreProducto);
+    }
 
 }
 
 
-// =========================================
-// 9. CARGAR LOS PRODUCTOS AL ABRIR LA PAGINA
-// =========================================
-
-document.addEventListener("DOMContentLoaded", cargarProductos);
-
-
- // =========================================
- // 9. FUNCION PARA AGREGAR PRODUCTOS AL CARRITO
- // =========================================
+/* =========================================
+   8. AGREGAR PRODUCTOS AL CARRITO
+========================================= */
 
 function agregarAlCarrito(idProducto) {
 
-    
-
-    // Buscar el producto seleccionado
     const producto = productosCargados.find(
-        producto => producto._id === idProducto
+        item => item._id === idProducto
     );
 
-    // Verificar que el producto exista
     if (!producto) {
         alert("No encontramos ese producto.");
         return;
     }
 
-    // Verificar si el producto ya esta en el carrito
     const productoExistente = carrito.find(
         item => item._id === idProducto
     );
 
     if (productoExistente) {
 
-        // Aumentar la cantidad
         productoExistente.cantidad++;
 
     } else {
 
-        // Agregar el producto por primera vez
         carrito.push({
             ...producto,
             cantidad: 1
@@ -291,32 +223,28 @@ function agregarAlCarrito(idProducto) {
 
     }
 
-    // Actualizar el carrito en pantalla
-    mostrarCarrito();
+    guardarCarrito();
 
     alert("¡Producto agregado al carrito!");
 
 }
 
- // =========================================
- // 10. FUNCION PARA MOSTRAR EL CARRITO
- // =========================================
+
+/* =========================================
+   9. MOSTRAR EL CARRITO
+========================================= */
 
 function mostrarCarrito() {
 
-    // Obtener el contenedor del carrito
     const contenedor = document.getElementById("lista-carrito");
-
-    // Obtener el espacio del total
     const totalElemento = document.getElementById("total-carrito");
 
-    // Limpiar el contenido anterior
+    if (!contenedor || !totalElemento) return;
+
     contenedor.innerHTML = "";
 
-    // Variable para calcular el total
     let total = 0;
 
-    // Verificar si el carrito esta vacio
     if (carrito.length === 0) {
 
         contenedor.innerHTML = "<p>Tu carrito está vacío.</p>";
@@ -326,16 +254,12 @@ function mostrarCarrito() {
         return;
     }
 
-    // Recorrer los productos del carrito
     carrito.forEach(producto => {
 
-        // Calcular el subtotal
         const subtotal = producto.precio * producto.cantidad;
 
-        // Sumar al total
         total += subtotal;
 
-        // Crear el elemento del producto
         const elemento = document.createElement("div");
 
         elemento.classList.add("producto-carrito");
@@ -348,27 +272,81 @@ function mostrarCarrito() {
             <p>Cantidad: ${producto.cantidad}</p>
 
             <p>Subtotal: $${subtotal.toLocaleString("es-CO")}</p>
+
+            <button onclick="cambiarCantidad('${producto._id}', -1)">
+                -
+            </button>
+
+            <button onclick="cambiarCantidad('${producto._id}', 1)">
+                +
+            </button>
+
+            <button onclick="eliminarDelCarrito('${producto._id}')">
+                Eliminar
+            </button>
         `;
 
-        // Agregar el producto al carrito visual
         contenedor.appendChild(elemento);
 
     });
 
-    // Mostrar el total de la compra
     totalElemento.textContent =
         "Total: $" + total.toLocaleString("es-CO");
 
 }
 
 
- // =========================================
- // 11. FUNCION PARA FINALIZAR LA COMPRA
- // =========================================
+/* =========================================
+   10. CAMBIAR CANTIDAD
+========================================= */
+
+function cambiarCantidad(idProducto, cambio) {
+
+    const producto = carrito.find(
+        item => item._id === idProducto
+    );
+
+    if (!producto) return;
+
+    producto.cantidad += cambio;
+
+    if (producto.cantidad <= 0) {
+
+        eliminarDelCarrito(idProducto);
+
+        return;
+    }
+
+    guardarCarrito();
+
+    mostrarCarrito();
+
+}
+
+
+/* =========================================
+   11. ELIMINAR PRODUCTOS
+========================================= */
+
+function eliminarDelCarrito(idProducto) {
+
+    carrito = carrito.filter(
+        producto => producto._id !== idProducto
+    );
+
+    guardarCarrito();
+
+    mostrarCarrito();
+
+}
+
+
+/* =========================================
+   12. FINALIZAR COMPRA POR WHATSAPP
+========================================= */
 
 function finalizarCompra() {
 
-    // Verificar si el carrito esta vacio
     if (carrito.length === 0) {
 
         alert("Tu carrito está vacío. Agrega productos antes de continuar.");
@@ -376,12 +354,11 @@ function finalizarCompra() {
         return;
     }
 
-    // Crear el mensaje de WhatsApp
-    let mensajePedido = "¡Hola! Quiero realizar un pedido en Lady Laurant.\n\n";
+    let mensajePedido =
+        "¡Hola! Quiero realizar un pedido en Lady Laurant.\n\n";
 
     let total = 0;
 
-    // Recorrer los productos del carrito
     carrito.forEach(producto => {
 
         const subtotal = producto.precio * producto.cantidad;
@@ -395,16 +372,90 @@ function finalizarCompra() {
 
     });
 
-    // Agregar el total de la compra
     mensajePedido +=
         "TOTAL DEL PEDIDO: $" + total.toLocaleString("es-CO");
 
-    // Preparar el enlace de WhatsApp
     const enlaceWhatsApp =
         "https://wa.me/573027140362?text=" +
         encodeURIComponent(mensajePedido);
 
-    // Abrir WhatsApp
     window.open(enlaceWhatsApp, "_blank");
 
 }
+
+
+/* =========================================
+   13. ENVIAR FORMULARIO DE CONTACTO
+========================================= */
+
+function enviarPedido(evento) {
+
+    evento.preventDefault();
+
+    const nombre = document.getElementById("nombre").value.trim();
+    const producto = document.getElementById("producto").value.trim();
+    const telefono = document.getElementById("telefono").value.trim();
+    const mensaje = document.getElementById("mensaje").value.trim();
+
+    if (nombre === "" || producto === "" || telefono === "") {
+
+        alert("Por favor, completa todos los campos obligatorios.");
+
+        return;
+    }
+
+    const textoPedido =
+        "¡Hola! Quiero realizar un pedido en Lady Laurant.\n\n" +
+        "Nombre: " + nombre + "\n" +
+        "Producto: " + producto + "\n" +
+        "Teléfono: " + telefono + "\n" +
+        "Detalles: " + (mensaje || "Sin detalles adicionales");
+
+    const enlaceWhatsApp =
+        "https://wa.me/573027140362?text=" +
+        encodeURIComponent(textoPedido);
+
+    window.open(enlaceWhatsApp, "_blank");
+
+}
+
+
+/* =========================================
+   14. CARGAR PRODUCTO EN CONTACTO
+========================================= */
+
+function cargarProductoContacto() {
+
+    const parametros = new URLSearchParams(window.location.search);
+
+    const producto = parametros.get("producto");
+
+    const campoProducto = document.getElementById("producto");
+
+    if (producto && campoProducto) {
+        campoProducto.value = producto;
+    }
+
+}
+
+
+/* =========================================
+   15. INICIAR FUNCIONES SEGUN LA PAGINA
+========================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    // Consultar productos solamente en el catálogo
+    if (document.getElementById("lista-productos")) {
+        cargarProductos();
+    }
+
+    // Mostrar carrito solamente en su página
+    if (document.getElementById("lista-carrito")) {
+        mostrarCarrito();
+    }
+
+    // Cargar producto seleccionado en contacto
+    cargarProductoContacto();
+
+});
