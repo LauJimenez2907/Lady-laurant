@@ -940,3 +940,298 @@ nav a.activo {
     }
 
 }
+
+
+/* =========================================
+   28. PAGINA NOSOTROS
+========================================= */
+
+.pagina-nosotros {
+    background-color: var(--fondo);
+}
+
+/* Portada */
+
+.nosotros-portada {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 40px;
+    padding: 65px 8%;
+    background: linear-gradient(120deg, #fff9fc, #fce8f0);
+    text-align: left;
+}
+
+.nosotros-portada-texto {
+    max-width: 550px;
+}
+
+.nosotros-portada h2 {
+    color: var(--texto);
+    font-family: Georgia, serif;
+    font-size: 40px;
+    line-height: 1.3;
+}
+
+.nosotros-portada-texto > p:not(.texto-decorativo) {
+    line-height: 1.8;
+}
+
+.nosotros-portada-imagen img {
+    width: 100%;
+    height: 370px;
+    object-fit: cover;
+    border-radius: 20px;
+    border: 5px solid var(--blanco);
+    box-shadow: 0 6px 20px rgba(201, 164, 92, 0.15);
+}
+
+
+/* Historia */
+
+.historia-marca {
+    background-color: var(--blanco);
+    padding: 65px 12%;
+}
+
+.historia-marca > p:not(.texto-decorativo) {
+    max-width: 850px;
+    margin: 0 auto 18px;
+    line-height: 1.9;
+}
+
+
+/* Quienes somos */
+
+.quienes-somos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 40px;
+    padding: 60px 8%;
+}
+
+.quienes-somos-imagen img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 20px;
+    border: 4px solid var(--rosado);
+}
+
+.quienes-somos-texto {
+    text-align: left;
+}
+
+.quienes-somos-texto p:not(.texto-decorativo) {
+    line-height: 1.8;
+}
+
+
+/* Mision y vision */
+
+.mision-vision {
+    background: linear-gradient(135deg, #fff0f6, #fffafc);
+}
+
+.rejilla-mision-vision {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 25px;
+    max-width: 1000px;
+    margin: 30px auto;
+}
+
+.tarjeta-filosofia {
+    background-color: var(--blanco);
+    padding: 35px 25px;
+    border: 1px solid var(--rosado);
+    border-radius: 18px;
+    box-shadow: 0 5px 15px rgba(201, 164, 92, 0.1);
+}
+
+.icono-filosofia {
+    color: var(--dorado);
+    font-size: 42px;
+    margin-bottom: 12px;
+}
+
+.tarjeta-filosofia h3 {
+    color: var(--dorado);
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.tarjeta-filosofia p {
+    line-height: 1.8;
+}
+
+
+/* Valores */
+
+.valores-marca {
+    background-color: var(--blanco);
+}
+
+.rejilla-valores {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+    max-width: 1200px;
+    margin: 35px auto;
+}
+
+.tarjeta-valor {
+    background-color: var(--fondo);
+    padding: 25px 15px;
+    border: 1px solid var(--rosado);
+    border-radius: 15px;
+    transition: transform 0.3s;
+}
+
+.tarjeta-valor:hover {
+    transform: translateY(-5px);
+}
+
+.tarjeta-valor span {
+    color: var(--dorado);
+    font-family: Georgia, serif;
+    font-size: 30px;
+}
+
+.tarjeta-valor h3 {
+    color: var(--texto);
+    margin: 12px 0;
+}
+
+
+/* Proceso de creacion */
+
+.proceso-creacion {
+    background: linear-gradient(135deg, #fff9fc, #fff0f6);
+}
+
+.rejilla-proceso {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+    max-width: 1200px;
+    margin: 35px auto;
+}
+
+.rejilla-proceso article {
+    background-color: var(--blanco);
+    padding: 25px 15px;
+    border: 1px solid var(--rosado);
+    border-radius: 15px;
+}
+
+.rejilla-proceso span {
+    display: inline-block;
+    color: var(--dorado);
+    font-size: 30px;
+    font-family: Georgia, serif;
+    margin-bottom: 10px;
+}
+
+.rejilla-proceso h3 {
+    color: var(--dorado);
+    margin-bottom: 10px;
+}
+
+
+/* Invitacion final */
+
+.nosotros-final {
+    background-color: var(--rosado);
+    padding: 60px 10%;
+}
+
+.nosotros-final h2 {
+    font-family: Georgia, serif;
+    font-size: 32px;
+}
+
+.nosotros-final p:not(.texto-decorativo) {
+    max-width: 700px;
+    margin: 0 auto 20px;
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   29. ADAPTACION PARA TABLETAS
+========================================= */
+
+@media (max-width: 950px) {
+
+    .rejilla-valores,
+    .rejilla-proceso {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+
+/* =========================================
+   30. ADAPTACION PARA CELULARES
+========================================= */
+
+@media (max-width: 600px) {
+
+    .nosotros-portada {
+        grid-template-columns: 1fr;
+        padding: 40px 20px;
+        text-align: center;
+    }
+
+    .nosotros-portada h2 {
+        font-size: 29px;
+    }
+
+    .nosotros-portada-imagen img {
+        height: 260px;
+    }
+
+    .historia-marca {
+        padding: 45px 20px;
+    }
+
+    .quienes-somos {
+        grid-template-columns: 1fr;
+        padding: 40px 20px;
+        gap: 20px;
+    }
+
+    .quienes-somos-texto {
+        text-align: center;
+    }
+
+    .quienes-somos-imagen img {
+        height: 250px;
+    }
+
+    .rejilla-mision-vision {
+        grid-template-columns: 1fr;
+    }
+
+    .rejilla-valores,
+    .rejilla-proceso {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .tarjeta-valor,
+    .rejilla-proceso article {
+        padding: 18px 10px;
+    }
+
+    .nosotros-final {
+        padding: 45px 20px;
+    }
+
+    .nosotros-final h2 {
+        font-size: 25px;
+    }
+
+}
