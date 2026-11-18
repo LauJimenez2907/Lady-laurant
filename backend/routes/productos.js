@@ -1,10 +1,11 @@
-
-// =========================================
-// 1. IMPORTAR EXPRESS Y EL CONTROLADOR
-// =========================================
+/* =========================================
+   1. IMPORTAR EXPRESS Y CONTROLADORES
+========================================= */
 
 const express = require("express");
 const router = express.Router();
+
+const verificarAdministrador = require("../middleware/auth");
 
 const {
     obtenerProductos,
@@ -14,38 +15,43 @@ const {
     eliminarProducto
 } = require("../controllers/productosController");
 
-// =========================================
-// 2. CONSULTAR TODOS LOS PRODUCTOS
-// =========================================
+/* =========================================
+   2. CONSULTAR TODOS LOS PRODUCTOS
+   Acceso público
+========================================= */
 
 router.get("/", obtenerProductos);
 
-// =========================================
-// 3. CONSULTAR UN PRODUCTO POR ID
-// =========================================
+/* =========================================
+   3. CONSULTAR UN PRODUCTO POR ID
+   Acceso público
+========================================= */
 
 router.get("/:id", obtenerProducto);
 
-// =========================================
-// 4. AGREGAR UN PRODUCTO
-// =========================================
+/* =========================================
+   4. AGREGAR UN PRODUCTO
+   Solo administrador
+========================================= */
 
-router.post("/", crearProducto);
+router.post("/", verificarAdministrador, crearProducto);
 
-// =========================================
-// 5. ACTUALIZAR UN PRODUCTO
-// =========================================
+/* =========================================
+   5. ACTUALIZAR UN PRODUCTO
+   Solo administrador
+========================================= */
 
-router.put("/:id", actualizarProducto);
+router.put("/:id", verificarAdministrador, actualizarProducto);
 
-// =========================================
-// 6. ELIMINAR UN PRODUCTO
-// =========================================
+/* =========================================
+   6. ELIMINAR UN PRODUCTO
+   Solo administrador
+========================================= */
 
-router.delete("/:id", eliminarProducto);
+router.delete("/:id", verificarAdministrador, eliminarProducto);
 
-// =========================================
-// 7. EXPORTAR LAS RUTAS
-// =========================================
+/* =========================================
+   7. EXPORTAR LAS RUTAS
+========================================= */
 
 module.exports = router;

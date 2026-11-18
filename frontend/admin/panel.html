@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel administrativo | Lady Laurant</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+    <!-- ENCABEZADO DEL PANEL -->
+    <header class="admin-encabezado">
+        <div class="admin-marca">
+            <h1>Lady Laurant</h1>
+            <p>Panel administrativo</p>
+        </div>
+
+        <div>
+            <a href="/" class="admin-volver">Volver a la tienda</a>
+            <button type="button" id="cerrar-sesion" class="admin-boton-cancelar">
+                Cerrar sesión
+            </button>
+        </div>
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="admin-contenedor">
+
+        <section class="admin-bienvenida">
+            <h2>Administración de productos</h2>
+            <p>Gestiona los productos de tu tienda Lady Laurant.</p>
+        </section>
+
+        <!-- FORMULARIO DE PRODUCTOS -->
+        <section class="admin-tarjeta">
+            <h2 class="admin-titulo-seccion">Agregar o editar producto</h2>
+
+            <form id="form-producto">
+
+                <input type="hidden" id="producto-id">
+
+                <div class="admin-campos">
+
+                    <div class="admin-campo">
+                        <label for="nombre">Nombre del producto</label>
+                        <input type="text" id="nombre" required>
+                    </div>
+
+                    <div class="admin-campo">
+                        <label for="precio">Precio</label>
+                        <input type="number" id="precio" min="0" required>
+                    </div>
+
+                    <div class="admin-campo admin-campo-completo">
+                        <label for="descripcion">Descripción</label>
+                        <textarea id="descripcion" required></textarea>
+                    </div>
+
+                    <div class="admin-campo">
+                        <label for="categoria">Categoría</label>
+                        <input type="text" id="categoria" required>
+                    </div>
+
+                    <div class="admin-campo">
+                        <label for="imagen">Imagen del producto</label>
+                        <input type="text" id="imagen" required>
+                    </div>
+
+                </div>
+
+                <div class="admin-acciones-formulario">
+                    <button type="submit" id="boton-guardar" class="admin-boton-guardar">
+                        Guardar producto
+                    </button>
+
+                    <button type="button" class="admin-boton-cancelar"
+                        onclick="limpiarFormulario()">
+                        Limpiar
+                    </button>
+                </div>
+
+                <p id="mensaje" class="admin-mensaje"></p>
+
+            </form>
+        </section>
+
+        <!-- LISTADO DE PRODUCTOS -->
+        <section class="admin-listado">
+            <h2 class="admin-titulo-seccion">Productos registrados</h2>
+            <p class="admin-descripcion-listado">
+                Aquí puedes consultar, editar y eliminar los productos.
+            </p>
+
+            <div id="lista-administracion">
+                <p class="admin-cargando">Cargando productos...</p>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="admin.js"></script>
+
+</body>
+</html>

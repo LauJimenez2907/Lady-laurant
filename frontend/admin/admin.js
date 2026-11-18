@@ -1,236 +1,257 @@
 
-// =========================================
-// 1. SELECCIONAR ELEMENTOS DEL HTML
-// =========================================
+// =====================================
+// ELEMENTOS DEL PANEL ADMINISTRATIVO
+// =====================================
 
 const formulario = document.getElementById("form-producto");
-const listaAdministracion = document.getElementById("lista-administracion");
+const listaProductos = document.getElementById("lista-administracion");
 const mensaje = document.getElementById("mensaje");
+const botonGuardar = document.getElementById("boton-guardar");
+const botonCerrarSesion = document.getElementById("cerrar-sesion");
 
-// =========================================
-// 2. CONSULTAR PRODUCTOS
-// =========================================
+// =====================================
+// VERIFICAR SESIÓN DEL ADMINISTRADOR
+// =====================================
 
-async function cargarProductosAdmin() {
-
+async function verificarSesionAdmin() {
     try {
-
-        const respuesta = await fetch("/api/productos");
+        const respuesta = await fetch("/api/auth/verificar", {
+            credentials: "same-origin"
+        });
 
         if (!respuesta.ok) {
-            throw new Error("No se pudieron consultar los productos.");
+            window.location.href = "/admin/index.html";
+            return false;
+        }
+
+        return true;
+
+    } catch (error) {
+        console.error("Error al verificar sesión:", error);
+        window.location.href = "/admin/index.html";
+        return false;
+    }
+}
+
+// =====================================
+// CARGAR PRODUCTOS
+// =====================================
+
+async function cargarProductosAdmin() {
+    try {
+        const respuesta = await fetch("/api/productos", {
+            credentials: "same-origin"
+        });
+
+        if (!respuesta.ok) {
+            throw new Error("No se pudieron cargar los productos.");
         }
 
         const productos = await respuesta.json();
 
-        mostrarProductosAdmin(productos);
+        listaProductos.innerHTML = "";
+
+        productos.forEach(producto => {
+            const tarjeta = document.createElement("div");
+            tarjeta.classList.add("producto-admin");
+
+            const nombre = document.createElement("h3");
+            nombre.textContent = producto.nombre;
+
+            const descripcion = document.createElement("p");
+            descripcion.textContent = producto.descripcion;
+
+            const precio = document.createElement("p");
+            precio.textContent = "$" + Number(producto.precio).toLocaleString("es-CO");
+
+            const categoria = document.createElement("p");
+            categoria.textContent = "Categoría: " + producto.categoria;
+
+            const editar = document.createElement("button");
+            editar.type = "button";
+            editar.textContent = "Editar";
+            editar.addEventListener("click", () => editarProducto(producto._id));
+
+            const eliminar = document.createElement("button");
+            eliminar.type = "button";
+            eliminar.textContent = "Eliminar";
+            eliminar.addEventListener("click", () => eliminarProducto(producto._id));
+
+            tarjeta.append(nombre, descripcion, precio, categoria, editar, eliminar);
+            listaProductos.appendChild(tarjeta);
+        });
+
+        if (productos.length === 0) {
+            listaProductos.textContent = "Todavía no hay productos registrados.";
+        }
 
     } catch (error) {
-
-        console.error(error);
-
-        listaAdministracion.innerHTML =
-            "<p>Error al cargar los productos.</p>";
+        console.error("Error:", error);
+        listaProductos.textContent = "No se pudieron cargar los productos.";
     }
 }
 
-// =========================================
-// 3. MOSTRAR PRODUCTOS
-// =========================================
+// =====================================
+// GUARDAR O ACTUALIZAR PRODUCTO
+// =====================================
 
-function mostrarProductosAdmin(productos) {
-
-    listaAdministracion.innerHTML = "";
-
-    if (productos.length === 0) {
-
-        listaAdministracion.innerHTML =
-            "<p>No hay productos registrados.</p>";
-
-        return;
-    }
-
-    productos.forEach(producto => {
-
-        const tarjeta = document.createElement("div");
-
-        tarjeta.classList.add("producto-admin");
-
-        tarjeta.innerHTML = `
-            <h3>${producto.nombre}</h3>
-
-            <p>${producto.descripcion}</p>
-
-            <p>
-                Precio: $${producto.precio.toLocaleString("es-CO")}
-            </p>
-
-            <p>Categoría: ${producto.categoria}</p>
-
-            <button onclick="editarProducto('${producto._id}')">
-                Editar
-            </button>
-
-            <button onclick="eliminarProducto('${producto._id}')">
-                Eliminar
-            </button>
-        `;
-
-        listaAdministracion.appendChild(tarjeta);
-    });
-}
-
-// =========================================
-// 4. GUARDAR O ACTUALIZAR PRODUCTOS
-// =========================================
-
-formulario.addEventListener("submit", async (evento) => {
-
+formulario.addEventListener("submit", async function(evento) {
     evento.preventDefault();
 
     const id = document.getElementById("producto-id").value;
 
     const producto = {
-
-        nombre: document.getElementById("nombre").value.trim(),
-
-        descripcion: document.getElementById("descripcion").value.trim(),
-
+        nombre: document.getElementById("nombre").value,
+        descripcion: document.getElementById("descripcion").value,
         precio: Number(document.getElementById("precio").value),
-
-        categoria: document.getElementById("categoria").value.trim(),
-
-        imagen: document.getElementById("imagen").value.trim()
+        categoria: document.getElementById("categoria").value,
+        imagen: document.getElementById("imagen").value
     };
 
+    const metodo = id ? "PUT" : "POST";
+
+    const url = id
+        ? `/api/productos/${id}`
+        : "/api/productos";
+
     try {
+        const respuesta = await fetch(url, {
+            method: metodo,
+            headers: {
+                "Content-Type": "application/json"
+            },
+            credentials: "same-origin",
+            body: JSON.stringify(producto)
+        });
 
-        const respuesta = await fetch(
-            id ? `/api/productos/${id}` : "/api/productos",
-            {
-                method: id ? "PUT" : "POST",
-
-                headers: {
-                    "Content-Type": "application/json"
-                },
-
-                body: JSON.stringify(producto)
-            }
-        );
+        const datos = await respuesta.json();
 
         if (!respuesta.ok) {
-            throw new Error("No se pudo guardar el producto.");
+            mensaje.textContent = datos.mensaje || "No se pudo guardar el producto.";
+            return;
         }
 
-        mensaje.textContent = id
-            ? "Producto actualizado correctamente."
-            : "Producto agregado correctamente.";
+        mensaje.textContent = "Producto guardado correctamente.";
 
         limpiarFormulario();
-
-        cargarProductosAdmin();
+        await cargarProductosAdmin();
 
     } catch (error) {
-
-        console.error(error);
-
-        mensaje.textContent = "Ocurrió un error al guardar el producto.";
+        console.error("Error al guardar:", error);
+        mensaje.textContent = "Error al conectar con el servidor.";
     }
 });
 
-// =========================================
-// 5. EDITAR PRODUCTOS
-// =========================================
+// =====================================
+// EDITAR PRODUCTO
+// =====================================
 
 async function editarProducto(id) {
-
     try {
-
         const respuesta = await fetch(`/api/productos/${id}`);
 
         if (!respuesta.ok) {
-            throw new Error("No se encontró el producto.");
+            throw new Error("No se pudo consultar el producto.");
         }
 
         const producto = await respuesta.json();
 
         document.getElementById("producto-id").value = producto._id;
-
         document.getElementById("nombre").value = producto.nombre;
-
         document.getElementById("descripcion").value = producto.descripcion;
-
         document.getElementById("precio").value = producto.precio;
-
         document.getElementById("categoria").value = producto.categoria;
+        document.getElementById("imagen").value = producto.imagen;
 
-        document.getElementById("imagen").value = producto.imagen || "";
-
-        document.getElementById("boton-guardar").textContent =
-            "Actualizar producto";
+        botonGuardar.textContent = "Actualizar producto";
 
         formulario.scrollIntoView({
             behavior: "smooth"
         });
 
     } catch (error) {
-
-        console.error(error);
-
+        console.error("Error al editar:", error);
         mensaje.textContent = "No se pudo cargar el producto.";
     }
 }
 
-// =========================================
-// 6. ELIMINAR PRODUCTOS
-// =========================================
+// =====================================
+// ELIMINAR PRODUCTO
+// =====================================
 
 async function eliminarProducto(id) {
+    const confirmar = confirm("¿Estás segura de que deseas eliminar este producto?");
 
-    const confirmar = confirm(
-        "¿Estás segura de que deseas eliminar este producto?"
-    );
-
-    if (!confirmar) return;
+    if (!confirmar) {
+        return;
+    }
 
     try {
-
         const respuesta = await fetch(`/api/productos/${id}`, {
-            method: "DELETE"
+            method: "DELETE",
+            credentials: "same-origin"
         });
 
+        const datos = await respuesta.json();
+
         if (!respuesta.ok) {
-            throw new Error("No se pudo eliminar el producto.");
+            mensaje.textContent = datos.mensaje || "No se pudo eliminar el producto.";
+            return;
         }
 
         mensaje.textContent = "Producto eliminado correctamente.";
 
-        cargarProductosAdmin();
+        await cargarProductosAdmin();
 
     } catch (error) {
-
-        console.error(error);
-
-        mensaje.textContent = "Ocurrió un error al eliminar el producto.";
+        console.error("Error al eliminar:", error);
+        mensaje.textContent = "Error al conectar con el servidor.";
     }
 }
 
-// =========================================
-// 7. LIMPIAR FORMULARIO
-// =========================================
+// =====================================
+// LIMPIAR FORMULARIO
+// =====================================
 
 function limpiarFormulario() {
-
     formulario.reset();
 
     document.getElementById("producto-id").value = "";
 
-    document.getElementById("boton-guardar").textContent =
-        "Guardar producto";
+    botonGuardar.textContent = "Guardar producto";
+
+    mensaje.textContent = "";
 }
 
-// =========================================
-// 8. CARGAR PRODUCTOS AL ABRIR EL PANEL
-// =========================================
+// =====================================
+// CERRAR SESIÓN
+// =====================================
 
-document.addEventListener("DOMContentLoaded", cargarProductosAdmin);
+if (botonCerrarSesion) {
+    botonCerrarSesion.addEventListener("click", async function() {
+        try {
+            await fetch("/api/auth/logout", {
+                method: "POST",
+                credentials: "same-origin"
+            });
+
+            window.location.href = "/admin/index.html";
+
+        } catch (error) {
+            console.error("Error al cerrar sesión:", error);
+            mensaje.textContent = "No se pudo cerrar la sesión.";
+        }
+    });
+}
+
+// =====================================
+// INICIAR PANEL
+// =====================================
+
+document.addEventListener("DOMContentLoaded", async function() {
+    const autenticado = await verificarSesionAdmin();
+
+    if (autenticado) {
+        await cargarProductosAdmin();
+    }
+});
